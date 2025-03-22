@@ -1,0 +1,51 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore master key for decrypting credentials and more.
+/web/config/master.key
+/web/config/credentials/*.key
+
+# Ignore node_modules
+/node_modules
+/web/node_modules
+/web/frontend/node_modules
+
+# Ignore built assets
+/public/assets
+/web/public/assets
+/web/frontend/dist
+/web/public/packs
+/web/public/packs-test
+
+# Ignore yarn files
+/web/yarn-error.log
+/web/yarn-debug.log*
+/web/.yarn-integrity
+
+# Ignore environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore Mac and Linux file system files
+*.swp
+.DS_Store
+
+# Ignore Shopify CLI files
+.shopify
+.DS_Store
+.env
+shopify.toml
