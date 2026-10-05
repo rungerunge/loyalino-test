@@ -1,0 +1,45 @@
+name: NeverMonday public macOS toolchain probe
+run-name: NM toolchain probe ${{ inputs.operation_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      operation_id:
+        required: true
+        type: string
+      workflow_sha:
+        required: true
+        type: string
+      script_sha256:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  probe:
+    if: github.repository == 'rungerunge/loyalino-test' && github.actor == 'rungerunge' && github.event_name == 'workflow_dispatch' && github.run_attempt == 1
+    runs-on: macos-26
+    timeout-minutes: 10
+    steps:
+      - name: Read only the reviewed public probe source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.workflow_sha }}
+          persist-credentials: false
+          sparse-checkout: .github/probes/nm-ios16-toolchain.cjs
+          sparse-checkout-cone-mode: false
+          submodules: false
+          lfs: false
+      - name: Capture finite preinstalled toolchain metadata
+        env:
+          NM_PROBE_WORKFLOW_SHA: ${{ inputs.workflow_sha }}
+          NM_PROBE_SCRIPT_SHA: ${{ inputs.script_sha256 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in NODE_OPTIONS NODE_DEBUG NODE_DEBUG_NATIVE; do
+            if [[ -n "${!key:-}" ]]; then
+              printf '%s\n' '{"kind":"ROOT_PUBLIC_TOOLCHAIN_PROBE_REFUSED","detailsSuppressed":true}'
+              exit 1
+            fi
+          done
+          node .github/probes/nm-ios16-toolchain.cjs --probe
