@@ -1,0 +1,652 @@
+[
+  {
+    "file": "C:/Program Files/GitHub CLI/gh.exe",
+    "bytes": 38837240,
+    "sha256": "be2755e9a381fcb1ff29e0cb1fbe060cf9a9bfd6c1562f4ef2f8bb1c8fd2e9e0"
+  },
+  {
+    "file": "C:/Users/runge/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/System.Security.Cryptography.Pkcs.dll",
+    "bytes": 767824,
+    "sha256": "f3e1cffab10cbbe7785026373277bb4bcc05bb90756a429c4d80f799336caabf"
+  },
+  {
+    "file": "C:/Users/runge/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/System.Security.Cryptography.dll",
+    "bytes": 2549584,
+    "sha256": "bee61e6bdeff9fb0c4f3cbf9d48e9d1d97d12a8bb85d1eeab9178e818b582eee"
+  },
+  {
+    "file": "C:/Users/runge/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+    "bytes": 301368,
+    "sha256": "362a356ce7f0940ec74f73a8fc2c990a2cc24a38a11c90bbd8eca947110ad139"
+  },
+  {
+    "file": "C:/Users/runge/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "bytes": 107312,
+    "sha256": "4278cf2a296f31737cae77cafeeb3dc71683094cf3b8fd6f3f02c968687e771c"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/bin/run",
+    "bytes": 267,
+    "sha256": "eaf942ea0e61fb3aeb78a2ed72c94b79b9f7877b76e580aa1fc4378f7f6d14b9"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/android.d.ts",
+    "bytes": 275,
+    "sha256": "d60231a509d8696e93f8afe4bd641c9742da44de8a1e83d32fcd03c85d679e66"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/android.js",
+    "bytes": 1960,
+    "sha256": "ea94c339d6d1dac318270ad9adc8418dc9fa66a5cb094a30f180fce8036ee9d5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/artifacts.d.ts",
+    "bytes": 159,
+    "sha256": "2299c2d1169c55601d6b86b660acf5a6e06b120926132d4c56613316146e393a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/artifacts.js",
+    "bytes": 3536,
+    "sha256": "08a6e63e435918eeb62a8986d24ae30fe98dcc3bca78d15157d96b27c2781058"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/build.d.ts",
+    "bytes": 144,
+    "sha256": "c5920817ff412eaa0d1321c00c51fb9bc1f36c11c67a5b4a993b3084752b825a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/build.js",
+    "bytes": 4043,
+    "sha256": "efe24dda4554bc7d7c7995b0f9c4ebc347b1b8e31be53fcd0bc9aa97e2afac65"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/checkRuntime.d.ts",
+    "bytes": 111,
+    "sha256": "796b945bbf2e210b0bf736d73724d7919adad0e378ac4623e00b7014e5bbdf76"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/checkRuntime.js",
+    "bytes": 5013,
+    "sha256": "eade29ffea476957cae5f8da3c49323374fe6d7ecaf6408d7f4184cbe9fc852d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/config.d.ts",
+    "bytes": 304,
+    "sha256": "e1ba435b1bef6e2fcb2fb277624614f041a51014b1d80160910ee2421c9e5c67"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/config.js",
+    "bytes": 1557,
+    "sha256": "e3e354b5659c8475ac3b41add7a9568b29bc58d8b6eb43a37df71a6d96e0fd53"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/exit.d.ts",
+    "bytes": 179,
+    "sha256": "ceaba2f0ce1b3ff9d43bb765c0c075cf4412e995cad5619e1700944432b14402"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/exit.js",
+    "bytes": 1192,
+    "sha256": "cc2c1f4f9646da703db3341f7cb265f9a43394e967289a293a3bf6907acc5db1"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/ios.d.ts",
+    "bytes": 263,
+    "sha256": "cce283e4d60008b3c69b45b0585d4a434326a81e71528004cc4957897d62e3d7"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/ios.js",
+    "bytes": 1931,
+    "sha256": "4321768f06a1fde963512798db4bee54c4977b181029ff4fac379616b8a37ae9"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/logger.d.ts",
+    "bytes": 678,
+    "sha256": "44a5d041f46fed9f8aa5e41c14fb24550cfad9810bad50fbadf63a2050014c9f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/logger.js",
+    "bytes": 4520,
+    "sha256": "0f4fbb76e0da13682ae5bf16753b56b463abe6538a86ef42019b15fd575ab443"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/main.d.ts",
+    "bytes": 11,
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/main.js",
+    "bytes": 913,
+    "sha256": "75e3a99c9b96be8fa4f2804fbc7ee8b8ef7cd0f7797fdb80aabd37335b43352f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/parseInput.d.ts",
+    "bytes": 193,
+    "sha256": "bcf8c5695f483c2fddf8b0022873e578a8e4b4c5ec5c84a0a3dc420abacab50b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/parseInput.js",
+    "bytes": 2852,
+    "sha256": "ad04a22a5a7598e02f3bb7f766e1344606efc68a94f58db3f6c1a22f8c240d6b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/types.d.ts",
+    "bytes": 221,
+    "sha256": "3cb6addb280f62a39ce2fc8a7e9cf3a48687864f5e930efb01f35f203c827014"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/types.js",
+    "bytes": 77,
+    "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/workingdir.d.ts",
+    "bytes": 141,
+    "sha256": "ff25f93a204b67bbcf8a75afbde74c20927347767659228c08c2b56d8606b3bf"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/dist/workingdir.js",
+    "bytes": 1718,
+    "sha256": "8f0dc5b7edb38cfe44febb34ebc50cdbe2fbc44a827c2b466c1f6e103000951f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-source-20261006/plugin-source/package.json",
+    "bytes": 1643,
+    "sha256": "402795ace581d42a7a88c95b43b97919cee64e4f4cfc34a5bc1bc23f55eb4e2e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/DOCS-REVISION.md",
+    "bytes": 1357,
+    "sha256": "b136dffe89138622bfbc8b6f72f1cd88d148e6b6677696fb8c328caad64898af"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/OPERATIONAL-ROUTE-V3.md",
+    "bytes": 3175,
+    "sha256": "d932645d0c9b07e3771024381ff67ba5db92a2b865d41ce0075d7ebf5b834b4f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/README.md",
+    "bytes": 7184,
+    "sha256": "d2c4af3951ee02e14201eaa43bee25dc3024e306cbb2e164e65e3eb0429cd3d9"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/bind.cjs",
+    "bytes": 8223,
+    "sha256": "f8d326c69bfa599ee2cfd1c2903eab8437ac12d3719eaeafcd06357d9e8eaa88"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/brightness-source-proof.json",
+    "bytes": 637,
+    "sha256": "f51109a45e0cb0873d0ebd61f5c8289d43c6ea28a30e576208fc6a97c30d16be"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/derivation-provenance.json",
+    "bytes": 19028,
+    "sha256": "39528bf9ae1181d864a60241bd05316a561a8eeeb331bd0ebca7aacb4d1c6ac7"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/README.md",
+    "bytes": 1073,
+    "sha256": "f9b656cc6d1e4aa185ea7635c8b30a7b98992f6f4ff1730510a0d695aa613104"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/dispatch-pins.json",
+    "bytes": 163,
+    "sha256": "30cd8d881eb1bfa7e463166871a025c5f6bf2e6b01af44d049dad828825281b6"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-dispatch.cjs",
+    "bytes": 5750,
+    "sha256": "04aec3ba5d34f191ca5a181b22590ac3daa35c18a50cee327756e5d2da2a9769"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-dispatch.test.cjs",
+    "bytes": 2195,
+    "sha256": "57eb7cc3f8036d9a51c1a06e89a5b613343b97e82a82cd4c30c3321e8144d748"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-retry-readonly.cjs",
+    "bytes": 11091,
+    "sha256": "4a930de9a0e42dc56a77c5e1f5796fbe44a0aa0c628fc481d0f658d6102239fe"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-retry-readonly.test.cjs",
+    "bytes": 21176,
+    "sha256": "4ef43c4d6c729a833817d60faf93cb06a99bb06858f90ada0a47322e398b61bd"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-version-readonly.cjs",
+    "bytes": 7672,
+    "sha256": "377d70af22e6c3221018158e1c59043ee1657d1401714bbe6a4f3409840cbb3a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/eas-version-readonly.test.cjs",
+    "bytes": 17205,
+    "sha256": "8191f49ce5a7b273bdec9ad3f38440018bf27ad5da3f013136dee93f84de6136"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/retry-source-manifest.json",
+    "bytes": 1537,
+    "sha256": "a62740c35f77dc70540a60fefd48139ea970813d4eb71584bd2af8324b20924b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/sdk-public-pins.json",
+    "bytes": 1572,
+    "sha256": "d8ef4090e695f973b3ac053cfd394bba2218179afa4e2fe5cd4d5fe5777d4745"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/dispatch/version-sdk-pins.json",
+    "bytes": 524,
+    "sha256": "7437467b148c320b8b6969828df42ca5a9a1a93b43c71bda5e6128144fb6250c"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/finalize-source.cjs",
+    "bytes": 5420,
+    "sha256": "bf920aeafce7e5e854bbfabc02c87c8886dacc858b09e726eff4f1e438a3050f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/approval-template.json",
+    "bytes": 888,
+    "sha256": "f4e67c44f59baceac98ff6253eb79ac09d97894dea0a72acff6a91020ca1d9bb"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/fresh-dispatch.cjs",
+    "bytes": 18231,
+    "sha256": "5bdfe196c84a20096bbbc08d628acc75a1151ec46fa7ce0d639610a01c1f9379"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/helpers.test.cjs",
+    "bytes": 26672,
+    "sha256": "324e064a87c666bea96cbf820b765993b3865954c4fcdb11cfef943d66df0e46"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/root-approve-v2-README.md",
+    "bytes": 1847,
+    "sha256": "da3d57ee7526664fce05bef0ecd823ad9f7150e28cb866b74cab4d959639dccb"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/root-approve-v2.cjs",
+    "bytes": 824,
+    "sha256": "c59ade5b341dd9fc054432980cb4f2374083fe5961ccdee1ba5f22bf4032b7ac"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/root-approve-v2.test.cjs",
+    "bytes": 4219,
+    "sha256": "d2957d9e5cba56ec267b0ca89c3f88f14abb6c531d611107e6a47559a2b95196"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/fresh-dispatch/root-approve.cjs",
+    "bytes": 811,
+    "sha256": "43db8cab09404fae76faaef44c19849b86519ec5bdb60c51d6505c67b8660faa"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/lucky-days-readiness.cjs",
+    "bytes": 4566,
+    "sha256": "5290a2abf08f1e9dfcd73a22248219cb60f9c928bebceb3f6db12e2c592376c5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/mobile-source-proof.json",
+    "bytes": 40375,
+    "sha256": "c4b119f25092262bf9719d66aa31aee0c3bef01cc4125e1a9930b90ceff2d94f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/predecessor-source-manifest.json",
+    "bytes": 16877,
+    "sha256": "acfd1e49c3d5502ed513aac2c66667c2f3e71c8143ce77b9d0c3b95921f81932"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/preparation-review-v3.json",
+    "bytes": 15123,
+    "sha256": "c2a52982d375624a620466b760fc2c6c2054f87542b79835d4d3994621aa32b4"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/preparation.test.cjs",
+    "bytes": 9519,
+    "sha256": "c9525dbd514d76829af5af66b7694460d4beb00439adb4e62fbf47f6365bd2e9"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/prepare-review.cjs",
+    "bytes": 5683,
+    "sha256": "5e7d3d6d628e4eec90e71786a04ec8396ad013474bca4b399102e6b8501b1ae0"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/prepare-source.cjs",
+    "bytes": 11709,
+    "sha256": "d48574ad32956528ef2798743281158cee482907158f57a5c7056f321b814462"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/revise-docs.cjs",
+    "bytes": 5834,
+    "sha256": "64774cda0e73243b7a35c6303ca3c88eb6f7c8f03a9b43f664d1697da8faf597"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/run-offline.cjs",
+    "bytes": 1636,
+    "sha256": "66cce184c739c28dee9c54327e0435a32a3a022492e816e57abdcbc19dd1aafe"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/sdk-source-proof.json",
+    "bytes": 241,
+    "sha256": "25f5eade8443379af635d114d396e51f59cdba1211255a97da1bd924bbfa9f43"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/successor.test.cjs",
+    "bytes": 7029,
+    "sha256": "15f70d0e879ff86006a98d8a8bd2fb6e45a24cb182f680603bc86d6dcad965af"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/template-manifest.json",
+    "bytes": 7176,
+    "sha256": "9c716abe760b1bbcea2dc2f8a0e18ebe4b278e8f67aafbbc65c2425bda63493d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/asc/README.md",
+    "bytes": 536,
+    "sha256": "fb7195e8b9124281b7ebd581ef3ac86ac68730369ebc835fcbd0fff458332358"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/asc/asc-testflight-build15.cjs",
+    "bytes": 35107,
+    "sha256": "2dfe367e75bb123b3ba91f3ac2ae0da8ff400baea1fbfcefac6d6891d6e29730"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/asc/asc-testflight-build15.test.cjs",
+    "bytes": 79761,
+    "sha256": "169eb82025a4ef663b8e5c2af564ad0ea5d8871e1b56c2ecc83364a02e77291a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/asc/lucky-days-readiness.cjs",
+    "bytes": 4566,
+    "sha256": "5290a2abf08f1e9dfcd73a22248219cb60f9c928bebceb3f6db12e2c592376c5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/README.md",
+    "bytes": 555,
+    "sha256": "8f1dc94bd6517bafb8b6beff716b64547dcff53c9d7cba3b55d7e50e7083f90b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/eas-security-log-proof-ios-only.cjs",
+    "bytes": 6846,
+    "sha256": "248567156762366fbf46ce276a5a9fc0bdabe9b366e6a5b7b2e1311fe15895b5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/eas-security-log-proof-ios-only.test.cjs",
+    "bytes": 3117,
+    "sha256": "740a9d8c852115ff61ff3e13db82aa52fd5ebe6909617c6715a31e3000d82b07"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/artifact_guard.py",
+    "bytes": 3583,
+    "sha256": "9656a57f27457f47c335ecad68bf98a2b3f002810132d040a097f8350ef61153"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/brightness_guard.py",
+    "bytes": 813,
+    "sha256": "00f6a32f2bfab4f44b9ccbc54921882b483946602c3118d33f72a0cd3fbc036a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/download-ios15-safe.cjs",
+    "bytes": 7788,
+    "sha256": "22a5fd3a06773041ee68e4ab845d4706b55b83f9224820d7bebb2b0d516a704d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/download-ios15-safe.test.cjs",
+    "bytes": 23483,
+    "sha256": "bc2aadc356595619fe7be9e01d2c49da4504de0a9baa94b0050e1364e37fe930"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/feature_guard.py",
+    "bytes": 1863,
+    "sha256": "94f4c0fcd29848d20bbfa01b94de12a048c36b6bceb58eb748ba52051c74b390"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/icon_guard.py",
+    "bytes": 7228,
+    "sha256": "1adc6c7c9d7a2659b17f8fb9e6856c0d8736a9f9f40af8b2936d6cdd9bea98fc"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/independent-checks.py",
+    "bytes": 13655,
+    "sha256": "26117a7dd6cf988c497a293c4c7fdde671ed2c13cec30659b4a16992e4820571"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/ipa-backend-ios15.py",
+    "bytes": 2237,
+    "sha256": "8489effb0d914911ca968e39673f254b13f0c5011aeb66163ec9a0144119b4e0"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/ipa-crypto-ios15.ps1",
+    "bytes": 6331,
+    "sha256": "38b3342bebdf62bf4825ec4578a1272e616b6ef94dc465098c9ed29186efe19f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/ipa-inspect-ios15.py",
+    "bytes": 8623,
+    "sha256": "e8599d6ad42dd9e98e46c51c4cfca97e45cdd71aa45da37200d71e0b8c466b64"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/lucky_days_guard.py",
+    "bytes": 1954,
+    "sha256": "ef9979bd86f03ac3fd93db33d8ee499f0fbe9ce3cfceac93da6f08aabebcdaaa"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/notifications_guard.py",
+    "bytes": 2210,
+    "sha256": "1ecd06d5b377869708bb26f8cdcaa2125818b0bd9f7d02e3304fef5a2f6bc808"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/offline-fixture-loader.cjs",
+    "bytes": 1339,
+    "sha256": "f6d3762c47dc4b5eec022ac622a910a517603d73b7fc2dfba7a7a468e8c0b7b6"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_artifact_guard.py",
+    "bytes": 6785,
+    "sha256": "195902f2b05bca2cd5fcd0baaf5a4e198bce2a9d6d9ff83faba199e69ebeab26"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_brightness_guard.py",
+    "bytes": 2011,
+    "sha256": "a18c49bd15f915d6d30374a47f91af3edc37aa68b483621da15ba6c2921f7fc2"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_feature_guard.py",
+    "bytes": 2660,
+    "sha256": "b12ea617f0622162f121c309826febbe1d2c3df00b3607b4beecd12f20249ddf"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_icon_guard.py",
+    "bytes": 3905,
+    "sha256": "7317a2f2ce608c486354dab069b029a17533033b0a39fe4db17bf5de2c8bb442"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_lucky_days_guard.py",
+    "bytes": 1743,
+    "sha256": "c560e0e0b79fd048c969f7e02cc8053a14bb7244cbe389f7e96ba6a029989299"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_notifications_guard.py",
+    "bytes": 2651,
+    "sha256": "69c5a9e72902e59ffd0bc55631a7cb0f6a8b1635c74ff8d5d5d4380253c72a4d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_pending_guard.py",
+    "bytes": 705,
+    "sha256": "f57cca20e8b1ebda0c7eedaef3e83eefb827f7e2e2b856803a05bce3fce69fb6"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/test_replacement_lineage.py",
+    "bytes": 1891,
+    "sha256": "6b33139e4a69ff7e9e4e604274c335604b69255bb4025164427d78eca2ed2b7d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/wallet-build-pins.cjs",
+    "bytes": 548,
+    "sha256": "23d17baf08a05f391c10af1c0dc6c65b7305fa5e196e266709710a7ba334e178"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/wallet-eas-status-readonly.cjs",
+    "bytes": 5744,
+    "sha256": "dfc454a44e6fb2866e83672d41b7539af264521faa3e6d392ff671bb2005afe4"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/ios/wallet-eas-status-readonly.test.cjs",
+    "bytes": 8749,
+    "sha256": "0ee38545363f05c941e26dc14703dd67797db9c26823dae52a937d74038529cb"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/offline-hook-fixture.cjs",
+    "bytes": 598,
+    "sha256": "c7feec3f73c1091ea6d93952ec1bea469b3735eb867361f299c70f4813feac39"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/native/pending-paths.test.cjs",
+    "bytes": 1673,
+    "sha256": "94e700b09154d65bf2dafd07a77eef5f49ceab72fbc91df05a0ac994f875b6d2"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/README.md",
+    "bytes": 537,
+    "sha256": "3f92d8e1f3dd8066ce155ab6623c03eba442cc14db9d9aadc41cd3d701bf46e9"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/ios15-submit.cjs",
+    "bytes": 20375,
+    "sha256": "e9cd67be9e69890977e0beeb0580f14b15c4abf7c66570dd8cda3e753d2cbbd5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/ios15-submit.test.cjs",
+    "bytes": 31794,
+    "sha256": "cbbe5c7abdde86ea3a7b71941ad63605342c479b5b31c4dfbff65e61d25ebf35"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/lucky-days-readiness.cjs",
+    "bytes": 4566,
+    "sha256": "5290a2abf08f1e9dfcd73a22248219cb60f9c928bebceb3f6db12e2c592376c5"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/sdk-public-pins.json",
+    "bytes": 4119,
+    "sha256": "fa595cc1dc9f2a4bb718d08878adb1bb448f70075475df8926293a38a368a6b0"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/submit-pins.cjs",
+    "bytes": 1846,
+    "sha256": "f49e1da718e8f649b5ed1e3689ddaa3f67404928a458d62f14813b9cf605e57b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-20261005/templates/submit/submit-preload.cjs",
+    "bytes": 8929,
+    "sha256": "15695b92654d2d2ece941a3a171418ffe3ef22fb2beb32a5b4cba6a0b15b7f5b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/lucky-days-ios15-signing-metadata-canonical-status-20261005/policy.cjs",
+    "bytes": 6596,
+    "sha256": "061743748d996b662a350de185f53a8c35ab389587b523fc2315802a3c3f275e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/macos26-official-image-root-17777e6a-04bc-409f-abc3-ec9a9aa61e81/official-image-readme.md",
+    "bytes": 17232,
+    "sha256": "688dc6f11befc470dd78896f4b69f5956dd9cc3986287919a6b912d748b97f21"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/@expo/eas-build-job/dist/common.js",
+    "bytes": 14223,
+    "sha256": "c0f81d8022740530681b6c1f651c199ed6deafa828504d67d78c65c132b28542"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/@expo/eas-build-job/dist/ios.js",
+    "bytes": 5002,
+    "sha256": "066e5bd328208a3ead280edbd83a94108988d04988d6924e9c34a6559be94524"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/@expo/eas-build-job/dist/job.js",
+    "bytes": 2500,
+    "sha256": "160380dff75d5605ce23807562daf3a2adac36d1ad845474f3dc8a8933ab0549"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/@expo/eas-build-job/dist/metadata.js",
+    "bytes": 2335,
+    "sha256": "99e3b339c00721943646ec141dd5f452e25e01613163e53223558f47660d1bbd"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/@expo/eas-build-job/package.json",
+    "bytes": 1212,
+    "sha256": "17c1508e6374486fe973ecf12449a51adc475b08c5bc9e8981d5543cd93a7d8c"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/api.js",
+    "bytes": 3921,
+    "sha256": "0fc0798dfd62debb267f1321e434719412f2bfab26641bc029cf79d0db84a7da"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/build/ios/prepareJob.js",
+    "bytes": 5010,
+    "sha256": "56c79f846abac94175b0c5bf975d4d953411ec9d6339f7702fd816531b3bde32"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/build/local.js",
+    "bytes": 7154,
+    "sha256": "8e981cd7a85c05414d7de4671ea721288e975f556edee0f0e0b21260f35b78fb"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/credentials/ios/api/graphql/queries/IosAppCredentialsQuery.js",
+    "bytes": 3568,
+    "sha256": "0a4043014417745268142bde18aea49dc43e8db671cb4d4d60c66a4dc02e96f9"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/credentials/ios/validators/validateProvisioningProfile.js",
+    "bytes": 5779,
+    "sha256": "c79c84bfc36bfdc08519f8f9b80a76d4493278a2b8a28e0575e9cc0ce75b8c78"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/generated.d.ts",
+    "bytes": 980929,
+    "sha256": "03f0909c723f2a7328083466399b5bf7efe2cad634e9ca44dedff26dcd458ac9"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/queries/AppQuery.js",
+    "bytes": 5582,
+    "sha256": "b470f7a5ee7b35092cb5411fe4805bbdb9ab7ae0de1cdcd6cdb6560bbb6a1165"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/types/credentials/AppleAppIdentifier.js",
+    "bytes": 398,
+    "sha256": "3341eff453df4c2731b1cbbf19b6fe69feea53546f5266df4114d8bc50d46102"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/types/credentials/AppleDistributionCertificate.js",
+    "bytes": 1513,
+    "sha256": "2aeeec92b2513a6fd75414a9be99dba88be39c620883f75fda52970a518094cb"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/types/credentials/AppleProvisioningProfile.js",
+    "bytes": 1146,
+    "sha256": "25e7974ec1cd40d3a67e33b347cfeafd0dd6e27a3586e7cab79cf06641119379"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/graphql/types/credentials/AppleTeam.js",
+    "bytes": 383,
+    "sha256": "a1ca9046a6dc5ab0eba73b708be605c0338cb11a2c50cddafac2e997ce2603a1"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/user/SessionManager.js",
+    "bytes": 7551,
+    "sha256": "135e747c176d07fe5ff049583fb9afdd39eceefc2830ec3cc25a3025cdaace92"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/build/utils/paths.js",
+    "bytes": 2119,
+    "sha256": "a4e3e7d03d722a177af5e3dbadb5d18dd2ae665770f574fc04ca1693c978b87f"
+  },
+  {
+    "file": "C:/Users/runge/AppData/Local/npm-cache/_npx/6bc7bae5c2059953/node_modules/eas-cli/package.json",
+    "bytes": 8253,
+    "sha256": "f02eeedf1bdf3e200aefa7848165f3d82ff387389ad6a7ecd1c294716f3a4b67"
+  },
+  {
+    "file": "C:\\Users\\runge\\.nevermonday-secrets\\public-node22-qa-tools-20261005\\extracted\\node-v22.23.3-win-x64\\node.exe",
+    "bytes": 86973768,
+    "sha256": "9c9245166b4a8e182e0b797da9c20136117ff24368eaff1fec8343a123c8db0e"
+  }
+]
