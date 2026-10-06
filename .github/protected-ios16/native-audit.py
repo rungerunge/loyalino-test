@@ -110,8 +110,37 @@ def audit(file):
         signature=executable(z.read(app+executable_name),info_raw,resources_raw)
         import base64
         return {'kind':'ROOT_CI16_INDEPENDENT_BYTE_AUDIT','ipaBytes':len(raw),'ipaSha256':hashlib.sha256(raw).hexdigest(),'version':16,'bundle':BUNDLE,'team':TEAM,'resourceCount':len(verified),'independentSignedResourcesVerified':True,'hermesSourceAssociationVerified':True,'privacyManifestVerified':True,'compiledFeaturesVerified':True,'currentFixes':fixes,'cmsEvidence':{'profile':base64.b64encode(z.read(app+'embedded.mobileprovision')).decode(),**signature},'nativeUiVerified':False,'currentAppleRevocationVerified':False,'easFinishedVerified':False}
+def failure_projection(error):
+    # Diagnostic only. Never stringify exceptions, values, paths or IPA material.
+    classes=((ValueError,'ValueError'),(AssertionError,'AssertionError'),(KeyError,'KeyError'),(TypeError,'TypeError'),
+             (AttributeError,'AttributeError'),(IndexError,'IndexError'),
+             (OverflowError,'OverflowError'),(FileNotFoundError,'FileNotFoundError'),
+             (PermissionError,'PermissionError'),(OSError,'OSError'),
+             (UnicodeDecodeError,'UnicodeDecodeError'),(json.JSONDecodeError,'JSONDecodeError'),
+             (zipfile.BadZipFile,'BadZipFile'),(plistlib.InvalidFileException,'InvalidFileException'),
+             (struct.error,'StructError'))
+    label=next((label for kind,label in classes if type(error) is kind),'OtherSuppressed')
+    functions={
+        'native-audit.py':('require','audit','current_fixes','executable','<module>'),
+        'artifact_guard.py':('verify_resource_hashes','otp_marker_evidence','wallet_marker_evidence','require_cart_consent_evidence'),
+        'feature_guard.py':('camera_locale_proof','financial_info_proof','benefit_marker_proof'),
+        'notifications_guard.py':('inbox_marker_proof','inbox_privacy_proof'),
+        'icon_guard.py':('decode_png','circle_visual_proof','signed_icon_proof'),
+        'lucky_days_guard.py':('lucky_days_marker_proof','signed_sdk_proof'),
+        'brightness_guard.py':('brightness_marker_proof',)}
+    sources={str(Path(__file__).with_name(name)):(name,names) for name,names in functions.items()}
+    frames=[]
+    trace=error.__traceback__
+    while trace is not None:
+        code=trace.tb_frame.f_code
+        source=sources.get(code.co_filename)
+        if source is not None and code.co_name in source[1] and isinstance(trace.tb_lineno,int) and 0<trace.tb_lineno<=10000:
+            frames.append({'file':source[0],'line':trace.tb_lineno})
+        trace=trace.tb_next
+    return {'nativeAuditVerified':False,'diagnosticOnly':True,'exceptionType':label,
+            'sourceFrames':frames[-2:]}
 if __name__=='__main__':
     try:
         require(len(sys.argv)==2); print(json.dumps(audit(sys.argv[1]),separators=(',',':')))
-    except Exception:
-        print('{"nativeAuditVerified":false}'); sys.exit(1)
+    except Exception as error:
+        print(json.dumps(failure_projection(error),separators=(',',':'))); sys.exit(1)
