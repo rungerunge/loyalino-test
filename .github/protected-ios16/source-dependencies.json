@@ -1173,5 +1173,305 @@
     "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-context-v2-20261006/source-review.json",
     "bytes": 53355,
     "sha256": "9fb7672a108f76ce3d0d85d39b100ab1e289d33916ea33a3515cfeb1d3c87048"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/policy.cjs",
+    "bytes": 4941,
+    "sha256": "82d71a1c9bca76266fe6f57cf2710ed37634c1cbb1e71f1396559e7546d156aa"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/envelope.cjs",
+    "bytes": 2795,
+    "sha256": "c68d73f8829d30ab31dce53dd8a10c8c8d205101cd19fba33b1c2fc292912552"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/export-query.cjs",
+    "bytes": 5136,
+    "sha256": "5b98237d39bf5436ec2b3d3e0473fb519be971160c70bfe093f7de54ca48df8c"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/transport.cjs",
+    "bytes": 2571,
+    "sha256": "7f6f8ce19fdd4c102dee4b843fb2e39acc85118300ec7e166dea5f0218d47e61"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/exporter.cjs",
+    "bytes": 4418,
+    "sha256": "72d32d46b1e1c69a088324643afb559fc7b55a301fee1ed58b2ce035d72e0b3f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/metadata-policy.cjs",
+    "bytes": 6596,
+    "sha256": "061743748d996b662a350de185f53a8c35ab389587b523fc2315802a3c3f275e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/source-bundle.cjs",
+    "bytes": 2198,
+    "sha256": "79419e4236457d73f53dde0df4b266404b2f351d9129639c28bd57a4246b5101"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/public-source-manifest.json",
+    "bytes": 62258,
+    "sha256": "d7e44f0fc256fb9fa8521425d2d98baf57a1ccc99edd944066946f13816df6e1"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/job.cjs",
+    "bytes": 2235,
+    "sha256": "2b815cd52d80071fc7366f91b95a9b8b323df74e145856a4d8ad88135babe8c4"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/payload.cjs",
+    "bytes": 1451,
+    "sha256": "72cdc7d0e5dfe61fb6efddf05b4743c58de5d0b777e004462ddb1095f56a43f8"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/private-capture.cjs",
+    "bytes": 2043,
+    "sha256": "f47f1a34f2cc9bab5d5915b17ee2f873b119b6cf7d33d9f204c450b52e84b64d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/held-source.cjs",
+    "bytes": 2097,
+    "sha256": "12337b61a6add72b7950c5e8f17095c5f0d7760a85506a08061a0df91601b0b3"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/bootstrap.cjs",
+    "bytes": 1809,
+    "sha256": "874834d5c0ecd96278f3b9d3b274e7e9474b6db8455a2313a6ea725e680ab9d7"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/github-release.cjs",
+    "bytes": 4557,
+    "sha256": "70da43acb64ba06cb09e928228426641d8231b52359de7c1cfc4ba81ede5cd49"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/signer-check.ps1",
+    "bytes": 4743,
+    "sha256": "33d10cec147470f272f26ec3bb25450d3820e9ad1b4d9b6c22e3eb013655b54f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/runner.cjs",
+    "bytes": 12294,
+    "sha256": "0b261d43d824db34ed94ce1fed2aefc176234f97db8478642a708e77e7c55da2"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/protected-ios16.yml",
+    "bytes": 2477,
+    "sha256": "0058da12bb6c6a30edf069a2ef0e0d076e166ca56973ae111a7c09b85a61d6e0"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/receiver.cjs",
+    "bytes": 5725,
+    "sha256": "bd8fc0036a45109176f5842d7d62f00012199ade3189230cbba2f4ec67e0119e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/root-export.cjs",
+    "bytes": 6512,
+    "sha256": "bb63e919ed49715d47aef9ab21f6dee3c56cf580b831c7421c46b4f32254b8bd"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/root-github.cjs",
+    "bytes": 8043,
+    "sha256": "29f46e11581274c6f2b95305f3da245af8e96d67033fd72881aa3d5f228d4106"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/root-receive.cjs",
+    "bytes": 6860,
+    "sha256": "3251dc8628735378a7440b3d4a05b9e82266a4c20ea65fdd6668d3f0efbd8902"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/lineage.cjs",
+    "bytes": 4642,
+    "sha256": "0018495fd3de7c5b84acfbff66a506b8fe98b63f288ed098c7dfdd64d62f3191"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/fixtures.cjs",
+    "bytes": 4006,
+    "sha256": "21fcf80d141ea0b05d7af56611d8d554f9bd105c4101ed9425b698badfb076d4"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/helpers.test.cjs",
+    "bytes": 18774,
+    "sha256": "037001cb3efcc32a436fb5d4fd7687eef075c501f4e0cb15a62c0100b75b3655"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/chain.test.cjs",
+    "bytes": 10449,
+    "sha256": "444c56c468e760cb719d328bb2e30140300c1cd98e53b131f5ae74e477ed09d2"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/lineage.test.cjs",
+    "bytes": 6383,
+    "sha256": "463cef2cc1d825ad844513d104c1f7c0da9679465904cd7e8b4ecde35d02136f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/crypto.test.cjs",
+    "bytes": 1694,
+    "sha256": "90158b5218f55396ee6e3c3c07976611aca90d0a01ac9b1d4e75d369422c2b68"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/crypto-fixtures.ps1",
+    "bytes": 2341,
+    "sha256": "3248ebe6fe4e011fb9d0f1769c8a640b3d66a18e8a7ca3dd19202c3e41674f2c"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/native-audit.py",
+    "bytes": 12668,
+    "sha256": "b572095a3e4c629d639cf94ee8c0768b77f27f1e1bdd82a268312f405a3df49d"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/native-byte.test.py",
+    "bytes": 3767,
+    "sha256": "536e490b0845096be9f3290dfa4ff102c26d8163e849d290cd5a659f8c01b6bc"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/ipa-cms-check.ps1",
+    "bytes": 2378,
+    "sha256": "5b9dbfdb2e694822b4634d055271a6f7e3e2f478b3e335379a4ccd4618e9b13c"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/artifact_guard.py",
+    "bytes": 3583,
+    "sha256": "9656a57f27457f47c335ecad68bf98a2b3f002810132d040a097f8350ef61153"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/feature_guard.py",
+    "bytes": 1863,
+    "sha256": "94f4c0fcd29848d20bbfa01b94de12a048c36b6bceb58eb748ba52051c74b390"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/brightness_guard.py",
+    "bytes": 813,
+    "sha256": "00f6a32f2bfab4f44b9ccbc54921882b483946602c3118d33f72a0cd3fbc036a"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/lucky_days_guard.py",
+    "bytes": 1954,
+    "sha256": "ef9979bd86f03ac3fd93db33d8ee499f0fbe9ce3cfceac93da6f08aabebcdaaa"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/notifications_guard.py",
+    "bytes": 2210,
+    "sha256": "1ecd06d5b377869708bb26f8cdcaa2125818b0bd9f7d02e3304fef5a2f6bc808"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/icon_guard.py",
+    "bytes": 7228,
+    "sha256": "1adc6c7c9d7a2659b17f8fb9e6856c0d8736a9f9f40af8b2936d6cdd9bea98fc"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/README.md",
+    "bytes": 17294,
+    "sha256": "5bc0a1b26226cb0f4073db97aa849910e699af82a8d087fa60686b32cbb3f93e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/approval-template.json",
+    "bytes": 1294,
+    "sha256": "94e2da2a90dc9a59fb23ca8f9a6f4647e77fd9082a734a078e53e284275322fc"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/build-input-template.json",
+    "bytes": 217,
+    "sha256": "056463967fd85aa091b902916afea5d7703ba8ac86b3a5eac47a7158d4c87825"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/runtime-package.json",
+    "bytes": 130,
+    "sha256": "3b47b30ca8045511c384242ac0649665694685c88785dc72e464f2b050a01436"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/runtime-package-lock.json",
+    "bytes": 128389,
+    "sha256": "aadb3e94ef581688c0e50fe11b6784711ab4fb27a410a34deb0cc6930a5230b1"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/local-plugin-public.json",
+    "bytes": 1607,
+    "sha256": "329ca662fdb7cc6d8f29271997c5611e7c10ae38b2e9a03503c02f13d930220f"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/plugin-public-source-pins.json",
+    "bytes": 4295,
+    "sha256": "989513dbab19de974af0339e5b3bec6acc83eeada171ed6bcb564f86f08a6af1"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/source-dependencies.json",
+    "bytes": 53141,
+    "sha256": "4b719e2ec926f9bed6c5daaacf5dbe4788c2499c18c6679f3b7cef3ffe9b0eb8"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/macos-probe.cjs",
+    "bytes": 5877,
+    "sha256": "21a7cad7306874631dc3e8df764d16998e8a6a13c895a04145ce217b63b9276b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/publication.cjs",
+    "bytes": 1074,
+    "sha256": "a67dd5f2f7ccff2f92c28dd1d10cb20c309f2e860be86591c6824ae5e2e7d2de"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/context.test.cjs",
+    "bytes": 9573,
+    "sha256": "4e8d49b29d3cd112619a51821bed8a2be58081e79276d5dd3cd81728ea7ba0e2"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/failed-operation.cjs",
+    "bytes": 1984,
+    "sha256": "47f35f70e26b65b6872e5d1bdb7adb92314ed288dbf368c71bb79b8bf65f203e"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/failed-operation-c0a.cjs",
+    "bytes": 1569,
+    "sha256": "00349cce9b5b2169fb436b22318ba0b9da7919ce0074133bd8328f892de7c2cd"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/audit-diagnostic.test.cjs",
+    "bytes": 3434,
+    "sha256": "a43a6ec05b72241b9aea0d7f6dc6e156cbfd80cea6e4dbdeb8bfbc991ea42b0b"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/audit-diagnostic.test.py",
+    "bytes": 5327,
+    "sha256": "6e379915b5dbd3a8a8e76bef45a1cda6e5321f2692adf4fc4d1a9106ce7703eb"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/prepare-review.cjs",
+    "bytes": 5882,
+    "sha256": "cf6ef0f883130389c4ef17a8e1e1ef0a1cba701212d55ce42023c75175045877"
+  },
+  {
+    "file": "C:/Users/runge/.nevermonday-secrets/ios16-protected-github-macos-audit-diagnostic-20261006/source-review.json",
+    "bytes": 65978,
+    "sha256": "9954fc483cc4fd0fbcf0fc7733a9acc141ec7f9ecf7e1727f94f4c8baee785b4"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/ios/EXConstantsService.m",
+    "bytes": 4224,
+    "sha256": "f7e86464a15d248044a43c6a716292c6b7b13a0859bd661984ac5b3062a40ca8"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/src/Constants.ts",
+    "bytes": 7759,
+    "sha256": "47ff54233d77b23307234268933c0eabfec2adaf50a9b8a8c0086211acf71407"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/scripts/src/getAppConfig.ts",
+    "bytes": 959,
+    "sha256": "f1d8373df9f7651100a418c0bca05d820f03d6c15aec6ef7eb9b924503b71810"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/scripts/get-app-config-ios.sh",
+    "bytes": 1288,
+    "sha256": "e12dcf26e9b9fc301a43e95bf9ba284700438776da5b740aa197688be0e2be66"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/ios/EXConstants.podspec",
+    "bytes": 1935,
+    "sha256": "8f9047f6c2596015815155a81b5a218e0519dba6218bca2e900bfa1e6d82e70a"
+  },
+  {
+    "file": "C:/Users/runge/.codex/worktrees/query-reconnect-recovery/nevermonday app/mobile/node_modules/expo-constants/package.json",
+    "bytes": 1634,
+    "sha256": "050b0969d76b2a57cad5bccad4e16f6a7e262b8b468fd17fa277195ef5791673"
   }
 ]

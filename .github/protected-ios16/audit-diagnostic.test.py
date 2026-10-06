@@ -14,7 +14,14 @@ class Projection(unittest.TestCase):
     def test_original_accepting_prefix_and_seven_original_controls(self):
         original=(root.parent/'ios16-protected-github-macos-context-v2-20261006/native-audit.py').read_bytes()
         current=(root/'native-audit.py').read_bytes()
-        self.assertEqual(original.split(b"if __name__=='__main__':")[0],current.split(b'def failure_projection(error):')[0])
+        start=current.index(b'# BEGIN signed runtime configuration proof')
+        stop=current.index(b'# END signed runtime configuration proof.')+len(b'# END signed runtime configuration proof.\n\n')
+        restored=current[:start]+current[stop:]
+        old_line=b"bundle=z.read(app+'main.jsbundle'); require(bundle[:8] == bytes.fromhex('c61fbc03c103191f') and API in bundle and b'https://api.nevermonday.dk/api/mobile/v1' not in bundle)"
+        new_line=b"bundle=z.read(app+'main.jsbundle'); archive_runtime_proof(bundle, names, verified, app, z.getinfo, z.read)"
+        self.assertEqual(restored.count(new_line),1)
+        restored=restored.replace(new_line,old_line).replace(b'runtime_config_preflight(names, app, z.getinfo); ',b'')
+        self.assertEqual(original.split(b"if __name__=='__main__':")[0],restored.split(b'def failure_projection(error):')[0])
         self.assertEqual(unittest.defaultTestLoader.loadTestsFromModule(legacy).countTestCases(),7)
     def test_exact_closed_failure_and_useful_two_frame_location(self):
         value=self.failure("def require(value):\n if not value: raise ValueError('PRIVATE code/customer/key/archive material')\ndef audit():\n require(False)\naudit()\n")

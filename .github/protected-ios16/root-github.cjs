@@ -3,7 +3,7 @@
 // upload-artifact/cache/package API, reusable Expo token or automatic retries.
 const cp=require('node:child_process'),P=require('./policy.cjs'),H=require('./held-source.cjs'),R=require('./root-export.cjs');
 const GH='C:/Program Files/GitHub CLI/gh.exe';
-function cli(args,input,ports={}){const invoke=ports.invoke||cp.spawnSync,r=invoke(GH,args,{input,env:R.rootEnvironment(process.env),shell:false,encoding:null,timeout:60000,maxBuffer:8*1024*1024,windowsHide:true});if(r.status!==0||r.error||r.signal||r.stderr.length)P.fail();return r.stdout;}
+function cli(args,input,ports={}){if(typeof ports.check!=='function')P.fail();ports.check();const invoke=ports.invoke||cp.spawnSync,r=invoke(GH,args,{input,env:R.rootEnvironment(process.env),shell:false,encoding:null,timeout:60000,maxBuffer:8*1024*1024,windowsHide:true});ports.check();if(r.status!==0||r.error||r.signal||r.stderr.length)P.fail();return r.stdout;}
 function api(method,endpoint,body,ports){const args=['api','--method',method,endpoint];if(body!==undefined)args.push('--input','-');return JSON.parse(cli(args,body===undefined?undefined:JSON.stringify(body),ports).toString('utf8'));}
 async function placeAndDispatch(a,current,key,releaseId,inputAsset,ports){P.approval(a,ports.now());P.repository(current,ports.now());if(current.refSha!==a.workflowCommit||!Buffer.isBuffer(key)||key.length!==32||!P.exact(inputAsset,['assetId','cipherSha256','cipherBytes'])||!Number.isSafeInteger(releaseId)||releaseId<1)P.fail();ports.check();ports.verifyRemoteSourceAndTag();P.approval(a,ports.now());ports.reserve(a.operationId);const repo='/repos/'+P.REPOSITORY,environment=a.environmentName,tag='nm-ios16-'+a.operationId;
  // Root must first create the one cipher-only prerelease at workflowCommit and

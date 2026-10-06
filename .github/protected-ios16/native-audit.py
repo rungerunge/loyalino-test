@@ -15,6 +15,60 @@ BUNDLE = 'dk.nevermonday.app'
 API = b'https://backend-production-d356.up.railway.app/api/mobile/v1'
 CART_MARKERS=(b'Cart identity changed',b'nm.cartId',b'isInternetReachable',b'cancelQueries',b'refetchQueries')
 QUERY_MARKERS=(b'subscribeQueryNetwork',b'refetchOnReconnect',b'networkMode',b'setEventListener',b'isConnected',b'isInternetReachable')
+# BEGIN signed runtime configuration proof (source-derived Expo Constants loader).
+RUNTIME_CONFIG = 'EXConstants.bundle/app.config'
+HERMES_MAGIC = bytes.fromhex('c61fbc03c103191f')
+RUNTIME_SDK = '57.0.0'
+RUNTIME_PROJECT = 'adf6c486-4d81-4e19-b6b7-25e5b4ca1064'
+
+def _unique_runtime_object(pairs):
+    value = {}
+    for key, item in pairs:
+        require(isinstance(key, str) and key not in value)
+        value[key] = item
+    return value
+
+def _invalid_runtime_constant(value):
+    require(False)
+
+def runtime_config_proof(configs, verified, prefix=''):
+    require(isinstance(configs, list) and len(configs) == 1)
+    name, raw = configs[0]
+    require(name == prefix + RUNTIME_CONFIG and RUNTIME_CONFIG in verified)
+    require(isinstance(raw, bytes) and 0 < len(raw) <= 65536)
+    value = json.loads(raw.decode('utf-8'), object_pairs_hook=_unique_runtime_object,
+                       parse_constant=_invalid_runtime_constant)
+    require(isinstance(value, dict))
+    require(value.get('sdkVersion') == RUNTIME_SDK)
+    extra = value.get('extra')
+    require(isinstance(extra, dict))
+    require(extra.get('apiBase') == API.decode('ascii'))
+    eas = extra.get('eas')
+    require(isinstance(eas, dict) and eas.get('projectId') == RUNTIME_PROJECT)
+    return True
+
+def bundle_runtime_proof(bundle, configs, verified, prefix=''):
+    require(isinstance(bundle, bytes) and bundle[:8] == HERMES_MAGIC)
+    require(b'https://api.nevermonday.dk/api/mobile/v1' not in bundle)
+    return runtime_config_proof(configs, verified, prefix)
+def runtime_config_preflight(names, prefix, information):
+    candidates = [name for name in names if name.endswith('app.config')]
+    require(len(candidates) == 1)
+    name = candidates[0]
+    require(name == prefix + RUNTIME_CONFIG)
+    size = information(name).file_size
+    require(isinstance(size, int) and not isinstance(size, bool) and 0 < size <= 65536)
+    return name, size
+
+def archive_runtime_proof(bundle, names, verified, prefix, information, read):
+    name, size = runtime_config_preflight(names, prefix, information)
+    require(RUNTIME_CONFIG in verified)
+    raw = read(name)
+    require(isinstance(raw, bytes) and len(raw) == size)
+    return bundle_runtime_proof(bundle, [(name, raw)], verified, prefix)
+
+# END signed runtime configuration proof.
+
 def current_fixes(bundle,verified):
     require('main.jsbundle' in verified and all(m in bundle for m in CART_MARKERS) and all(m in bundle for m in QUERY_MARKERS))
     manifest_raw=Path(__file__).with_name('public-source-manifest.json').read_bytes()
@@ -84,7 +138,7 @@ def audit(file):
         require(all(not n.startswith('/') and '\\' not in n and '..' not in n.split('/') for n in names))
         require(sum(i.file_size for i in z.infolist()) <= 1024*1024*1024)
         mains=[n for n in names if re.fullmatch(r'Payload/[^/]+\.app/Info\.plist',n)]; require(len(mains)==1)
-        app=mains[0][:-10]; info_raw=z.read(mains[0]); info=plistlib.loads(info_raw)
+        app=mains[0][:-10]; runtime_config_preflight(names, app, z.getinfo); info_raw=z.read(mains[0]); info=plistlib.loads(info_raw)
         require(info.get('CFBundleIdentifier')==BUNDLE and info.get('CFBundleVersion')=='16' and info.get('CFBundleShortVersionString')=='1.0.0' and info.get('UIDeviceFamily')==[1] and info.get('ITSAppUsesNonExemptEncryption') is False)
         require(info.get('CFBundleLocalizations') and sorted(info['CFBundleLocalizations'])==['da','en'] and info.get('CFBundleDevelopmentRegion')=='da')
         require('NSMicrophoneUsageDescription' not in info and 'NSUserTrackingUsageDescription' not in info)
@@ -99,7 +153,7 @@ def audit(file):
         declarations=privacy.get('NSPrivacyCollectedDataTypes'); require(isinstance(declarations,list) and len(declarations)==11)
         require(all(d.get('NSPrivacyCollectedDataTypeLinked') is True and d.get('NSPrivacyCollectedDataTypeTracking') is False for d in declarations))
         require({d.get('NSPrivacyCollectedDataType') for d in declarations}=={'NSPrivacyCollectedDataTypeEmailAddress','NSPrivacyCollectedDataTypeName','NSPrivacyCollectedDataTypePhoneNumber','NSPrivacyCollectedDataTypePhysicalAddress','NSPrivacyCollectedDataTypePaymentInfo','NSPrivacyCollectedDataTypeOtherFinancialInfo','NSPrivacyCollectedDataTypePurchaseHistory','NSPrivacyCollectedDataTypeUserID','NSPrivacyCollectedDataTypeDeviceID','NSPrivacyCollectedDataTypeProductInteraction','NSPrivacyCollectedDataTypeOtherDataTypes'})
-        bundle=z.read(app+'main.jsbundle'); require(bundle[:8] == bytes.fromhex('c61fbc03c103191f') and API in bundle and b'https://api.nevermonday.dk/api/mobile/v1' not in bundle)
+        bundle=z.read(app+'main.jsbundle'); archive_runtime_proof(bundle, names, verified, app, z.getinfo, z.read)
         require(otp_marker_evidence(bundle)==2 and wallet_marker_evidence(bundle)==6); require_cart_consent_evidence(bundle,verified)
         fixes=current_fixes(bundle,verified)
         for marker in [b'wallet-pass-screen',b'getSessionRevision',b'home-member-summary']:
@@ -121,7 +175,7 @@ def failure_projection(error):
              (struct.error,'StructError'))
     label=next((label for kind,label in classes if type(error) is kind),'OtherSuppressed')
     functions={
-        'native-audit.py':('require','audit','current_fixes','executable','<module>'),
+        'native-audit.py':('require','audit','current_fixes','executable','runtime_config_proof','bundle_runtime_proof','archive_runtime_proof','runtime_config_preflight','_unique_runtime_object','_invalid_runtime_constant','<module>'),
         'artifact_guard.py':('verify_resource_hashes','otp_marker_evidence','wallet_marker_evidence','require_cart_consent_evidence'),
         'feature_guard.py':('camera_locale_proof','financial_info_proof','benefit_marker_proof'),
         'notifications_guard.py':('inbox_marker_proof','inbox_privacy_proof'),
