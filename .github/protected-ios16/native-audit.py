@@ -78,6 +78,53 @@ def current_fixes(bundle,verified):
     return {'cartRecoveryCompiledMarkersVerified':True,'queryReconnectCompiledMarkersVerified':True,'nativeSource':manifest['nativeSource'],'backendSource':manifest['backendSource'],'sourceManifestSha256':hashlib.sha256(manifest_raw).hexdigest(),'cartSourceSha256':source['src/lib/cart.tsx'],'queryNetworkSourceSha256':source['src/lib/query-network.ts'],'queriesSourceSha256':source['src/lib/queries.ts'],'nativeRecoveryBehaviorVerified':False}
 def require(v):
     if not v: raise ValueError('CI16_NATIVE_REFUSED')
+# BEGIN declared SuperBlob capacity proof.
+def signature_capacity(code):
+    readable = isinstance(code, bytes) and len(code) >= 12
+    extent = len(code) if isinstance(code, bytes) else 0
+    magic, length, count = struct.unpack_from('>III', code) if readable else (0, 0, 0)
+    within = readable and 12 <= length <= extent
+    allowed = readable and 0 < count <= 32
+    index_fits = within and allowed and 12 + count * 8 <= length
+    remaining_zero = within and not any(code[length:])
+    shape = {
+        'headerReadable': readable,
+        'magicMatches': readable and magic == 0xfade0cc0,
+        'declaredWithinCapacity': within,
+        'declaredEqualsCapacity': readable and length == extent,
+        'countAllowed': allowed,
+        'indexFitsDeclared': index_fits,
+        'remainingCapacityZero': remaining_zero,
+        'reservedCapacityBytes': extent,
+        'declaredSuperBlobBytes': length,
+        'superBlobCount': count,
+        'remainingCapacityBytes': extent - length if within else 0,
+    }
+    if not (shape['magicMatches'] and index_fits and remaining_zero):
+        error = ValueError('CI16_NATIVE_REFUSED')
+        error.signature_capacity_shape = shape
+        raise error
+    return code[:length], count
+
+def signature_failure_shape(error):
+    # Only the explicitly attached, closed scalar record is eligible for output.
+    # Never inspect exception text, traceback locals or any private signature bytes.
+    if type(error) is not ValueError:
+        return None
+    value = getattr(error, 'signature_capacity_shape', None)
+    booleans = ('headerReadable', 'magicMatches', 'declaredWithinCapacity',
+                'declaredEqualsCapacity', 'countAllowed', 'indexFitsDeclared',
+                'remainingCapacityZero')
+    integers = ('reservedCapacityBytes', 'declaredSuperBlobBytes',
+                'superBlobCount', 'remainingCapacityBytes')
+    if (not isinstance(value, dict) or set(value) != set(booleans + integers)
+            or any(type(value[key]) is not bool for key in booleans)
+            or any(type(value[key]) is not int or not 0 <= value[key] <= 0xffffffff
+                   for key in integers)):
+        return None
+    return {key: value[key] for key in booleans + integers}
+# END declared SuperBlob capacity proof.
+
 def executable(part, info_raw, resources_raw):
     require(part[:4] == bytes.fromhex('cffaedfe') and len(part) > 32)
     count, cmds = struct.unpack_from('<II', part, 16)
@@ -94,8 +141,8 @@ def executable(part, info_raw, resources_raw):
         at += length
     require(at == 32+cmds and signature is not None)
     limit, code = signature
-    magic, length, count = struct.unpack_from('>III', code)
-    require(magic == 0xfade0cc0 and length == len(code) and 0 < count <= 32)
+    code, count = signature_capacity(code)
+    length = len(code)
     blobs, spans = {}, []
     for i in range(count):
         slot, offset = struct.unpack_from('>II', code, 12+i*8)
@@ -175,7 +222,7 @@ def failure_projection(error):
              (struct.error,'StructError'))
     label=next((label for kind,label in classes if type(error) is kind),'OtherSuppressed')
     functions={
-        'native-audit.py':('require','audit','current_fixes','executable','runtime_config_proof','bundle_runtime_proof','archive_runtime_proof','runtime_config_preflight','_unique_runtime_object','_invalid_runtime_constant','<module>'),
+        'native-audit.py':('require','audit','current_fixes','executable','signature_capacity','signature_failure_shape','runtime_config_proof','bundle_runtime_proof','archive_runtime_proof','runtime_config_preflight','_unique_runtime_object','_invalid_runtime_constant','<module>'),
         'artifact_guard.py':('verify_resource_hashes','otp_marker_evidence','wallet_marker_evidence','require_cart_consent_evidence'),
         'feature_guard.py':('camera_locale_proof','financial_info_proof','benefit_marker_proof'),
         'notifications_guard.py':('inbox_marker_proof','inbox_privacy_proof'),
@@ -191,8 +238,12 @@ def failure_projection(error):
         if source is not None and code.co_name in source[1] and isinstance(trace.tb_lineno,int) and 0<trace.tb_lineno<=10000:
             frames.append({'file':source[0],'line':trace.tb_lineno})
         trace=trace.tb_next
-    return {'nativeAuditVerified':False,'diagnosticOnly':True,'exceptionType':label,
-            'sourceFrames':frames[-2:]}
+    result = {'nativeAuditVerified':False,'diagnosticOnly':True,'exceptionType':label,
+              'sourceFrames':frames[-2:]}
+    shape = signature_failure_shape(error)
+    if shape is not None:
+        result['signatureCapacity'] = shape
+    return result
 if __name__=='__main__':
     try:
         require(len(sys.argv)==2); print(json.dumps(audit(sys.argv[1]),separators=(',',':')))

@@ -1,0 +1,63 @@
+{
+  "kind": "ROOT_IOS16_SIGNATURE_CAPACITY_PUBLIC_PROVENANCE",
+  "sourceOnly": true,
+  "repository": "apple-oss-distributions/Security",
+  "commit": "db15acbe6a7f257a859ad9a3bb86097bfe0679d9",
+  "primaryFiles": [
+    {
+      "path": "OSX/libsecurity_codesigning/lib/CodeSigner.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_codesigning/lib/CodeSigner.cpp",
+      "bytes": 13984,
+      "sha256": "3e795cead85abbc48aa665875b7540073212339222af1950b3631922ab425807"
+    },
+    {
+      "path": "OSX/libsecurity_codesigning/lib/signer.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_codesigning/lib/signer.cpp",
+      "bytes": 47386,
+      "sha256": "83c1cd525934c0b7d0c5f08322b02e347a5cbf9f521a67edd36023387a8559a2"
+    },
+    {
+      "path": "OSX/libsecurity_codesigning/lib/signerutils.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_codesigning/lib/signerutils.cpp",
+      "bytes": 14378,
+      "sha256": "2f352abf90941bca654b31bee3a44a75499abc22da4362601920c0ff6301c699"
+    },
+    {
+      "path": "OSX/libsecurity_codesigning/lib/codesign_alloc.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_codesigning/lib/codesign_alloc.cpp",
+      "bytes": 33047,
+      "sha256": "d76101e6f989374b3a065ca9c9d5fdfc2b8237f05894eda93b43e48f5e04a604"
+    },
+    {
+      "path": "OSX/libsecurity_codesigning/lib/machorep.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_codesigning/lib/machorep.cpp",
+      "bytes": 19690,
+      "sha256": "a4bad9b5376334efef9f87e00e740a6c336b0ca70dee4263a123995ef51ba9d6"
+    },
+    {
+      "path": "OSX/libsecurity_utilities/lib/blob.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_utilities/lib/blob.cpp",
+      "bytes": 3914,
+      "sha256": "a0b3ae23ac51a701c9409ae53754f38ff73dced844471d16ddc8eab4ee7eb74c"
+    },
+    {
+      "path": "OSX/libsecurity_utilities/lib/blob.h",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/Security/db15acbe6a7f257a859ad9a3bb86097bfe0679d9/OSX/libsecurity_utilities/lib/blob.h",
+      "bytes": 7635,
+      "sha256": "c83c479a67b30ba1f144ab8887d134f411c8d7bb5f6cffef4d7e1d02eda27959"
+    }
+  ],
+  "interpretation": [
+    "CMS capacity is reserved before actual signature generation, independently of16-byte alignment.",
+    "The default documented source reserves18000 CMS bytes.",
+    "The writer accepts actual blob length less than or equal to reserved signature capacity.",
+    "The loader treats LC datasize as a maximum and reads the declared blob length.",
+    "This verifier conservatively accepts only zero bytes beyond the declared SuperBlob.",
+    "Existing signing storage is not universally cleared; nonzero residual bytes remain refused."
+  ],
+  "actualToolchainSourceCommitVerified": false,
+  "historical9cFailureConjunctVerified": false,
+  "actualInputsRead": 0,
+  "authenticatedRequests": 0,
+  "publicSourceHttpReads": 7
+}

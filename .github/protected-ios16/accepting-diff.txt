@@ -1,0 +1,24 @@
+SOURCE-ONLY accepting seam record; no protected history bodies or actual artifacts.
+Parent native SHA256 018a55e35e81ab9fd085067322987f251d52bca39082b2a27582f6d6efa77bf0
+New native SHA256 0b1f8ad493f0d7c44f0a21eb7cb2b394250599084f42ee24369c75ec000a02ca
+Before native header:
+    magic, length, count = struct.unpack_from('>III', code)
+    require(magic == 0xfade0cc0 and length == len(code) and 0 < count <= 32)
+After native header:
+    code, count = signature_capacity(code)
+    length = len(code)
+Added helper exactly signature-source.cjs HELPER; zero-only bounded reserved capacity and closed failure scalars.
+Failure projection exact before:
+    return {'nativeAuditVerified':False,'diagnosticOnly':True,'exceptionType':label,
+            'sourceFrames':frames[-2:]}
+Failure projection exact after:
+    result = {'nativeAuditVerified':False,'diagnosticOnly':True,'exceptionType':label,
+              'sourceFrames':frames[-2:]}
+    shape = signature_failure_shape(error)
+    if shape is not None:
+        result['signatureCapacity'] = shape
+    return result
+Policy only adds spent a50 and9c UUID denial after the existing f895 denial.
+Root export/receive only replace each of two failed-operation-f895.cjs imports with failed-operation-9c.cjs.
+Every other accepting file is byte-identical to parent. source-dependencies.json/preparer/docs are explicit source-review changes.
+New history rows: a50 five,9c seven; original20 metadata modules unchanged.
