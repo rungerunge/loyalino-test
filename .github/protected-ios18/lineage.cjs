@@ -1,0 +1,23 @@
+'use strict';
+// Pure lineage validation. No filesystem/environment/network/SDK/job/artifact operations.
+const P=require('./policy.cjs');
+const COMPLETION_FRESH_MS=1800000;
+const TRUE_FLAGS=Object.freeze(['sourceVerified','cmsVerified','independentSignedResourcesVerified','hermesSourceAssociationVerified','privacyManifestVerified']);
+const FALSE_FLAGS=Object.freeze(['sourceSignersPlaintextPublic','rawLogsPublic','plainIpaPublic','paidRunner','actionsArtifacts','cache','packages','lfs','easCloudJobCreated','testFlightSubmitted','physicalVerified','productionReady']);
+const EXPECTED=Object.freeze(['runId','inputCipherSha256','inputCipherBytes','outputCipherSha256','outputCipherBytes','ipaSha256','ipaBytes','rootNativeAuditSha256']);
+const FIELDS=Object.freeze(['kind','operationId','repository','actor','event','workflowCommit','runId','runAttempt','runnerLabel','runnerOs','environmentName','nativeSource','backendSource','mobileFilesCount','version','bundle','team','startedAt','finishedAt','xcodeVersion','iosSdkVersion','toolchainSha256','inputCipherSha256','inputCipherBytes','outputCipherSha256','outputCipherBytes','ipaSha256','ipaBytes','sourceManifestSha256','certificateSerialSha256','profileUuidSha256','referenceSigningProofSha256','rootNativeAuditSha256',...TRUE_FLAGS,...FALSE_FLAGS,'easCloudBuildId']);
+function hash(v){if(typeof v!=='string'||!P.SHA.test(v)||/^0+$/.test(v))P.fail();return v;}
+function size(v,max,min=1){if(!Number.isSafeInteger(v)||v<min||v>max)P.fail();return v;}
+function expected(v){if(!P.exact(v,EXPECTED))P.fail();size(v.runId,Number.MAX_SAFE_INTEGER);for(const k of ['inputCipherSha256','outputCipherSha256','ipaSha256','rootNativeAuditSha256'])hash(v[k]);size(v.inputCipherBytes,2147483648);size(v.outputCipherBytes,2147483648);size(v.ipaBytes,536870912,1000000);return v;}
+function validate(record,approval,independent,now){
+ if(!Number.isSafeInteger(now)||now<0||!P.exact(record,FIELDS)||record.kind!=='ROOT_IOS18_PROTECTED_GITHUB_CI_BUILD')P.fail();
+ const start=P.utc(record.startedAt),finish=P.utc(record.finishedAt);if(start<0||finish<start||finish>now||now-finish>=COMPLETION_FRESH_MS)P.fail();
+ // Genuine dispatch/start must fall inside the original approval window. Completion
+ // is independently fresh; it never re-authorizes a dispatch after approval expiry.
+ const a=P.approval(approval,start),e=expected(independent);if(/^0+$/.test(a.workflowCommit))P.fail();
+ if(record.operationId!==a.operationId||record.repository!==P.REPOSITORY||record.actor!==P.ACTOR||record.event!=='workflow_dispatch'||record.workflowCommit!==a.workflowCommit||record.runId!==e.runId||record.runAttempt!==1||record.runnerLabel!==P.RUNNER||record.runnerOs!=='macOS'||record.environmentName!==a.environmentName||record.nativeSource!==P.SOURCE||record.backendSource!==P.BACKEND_SOURCE||record.mobileFilesCount!==253||record.version!==P.VERSION||record.bundle!==P.BUNDLE||record.team!==P.TEAM||record.xcodeVersion!==a.xcodeVersion||record.iosSdkVersion!==a.iosSdkVersion||record.toolchainSha256!==P.TOOLCHAIN_SHA||record.sourceManifestSha256!==a.publicSourceManifestSha256||record.certificateSerialSha256!==a.certificateSerialSha256||record.profileUuidSha256!==a.profileUuidSha256||record.referenceSigningProofSha256!==a.referenceSigningProofSha256)P.fail();
+ for(const k of EXPECTED)if(record[k]!==e[k])P.fail();
+ for(const k of TRUE_FLAGS)if(record[k]!==true)P.fail();for(const k of FALSE_FLAGS)if(record[k]!==false)P.fail();if(record.easCloudBuildId!==null)P.fail();
+ return Object.freeze({kind:'ROOT_IOS18_VALIDATED_GITHUB_CI_LINEAGE',operationId:a.operationId,repository:P.REPOSITORY,actor:P.ACTOR,event:'workflow_dispatch',workflowCommit:a.workflowCommit,runId:e.runId,runAttempt:1,runnerLabel:P.RUNNER,runnerOs:'macOS',nativeSource:P.SOURCE,backendSource:P.BACKEND_SOURCE,mobileFilesCount:253,version:P.VERSION,bundle:P.BUNDLE,team:P.TEAM,startedAt:record.startedAt,finishedAt:record.finishedAt,xcodeVersion:a.xcodeVersion,iosSdkVersion:a.iosSdkVersion,toolchainSha256:P.TOOLCHAIN_SHA,inputCipherSha256:e.inputCipherSha256,outputCipherSha256:e.outputCipherSha256,ipaSha256:e.ipaSha256,ipaBytes:e.ipaBytes,rootNativeAuditSha256:e.rootNativeAuditSha256,lineageVerified:true,independentReceiverBindingsVerified:true,rootNativeAuditReferenceBound:true,nativeAuditPerformedByThisVerifier:false,nativeAuditVerifiedByThisVerifier:false,easFinishedVerified:false,easCloudJobCreated:false,testFlightSubmitted:false,physicalVerified:false,readinessVerified:false,productionReady:false});
+}
+module.exports=Object.freeze({COMPLETION_FRESH_MS,TRUE_FLAGS,FALSE_FLAGS,EXPECTED,FIELDS,hash,size,expected,validate});

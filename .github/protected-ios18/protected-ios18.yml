@@ -1,0 +1,58 @@
+name: Protected local iOS18 build
+run-name: Protected iOS18 ${{ inputs.operation_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      operation_id: {required: true, type: string}
+      workflow_sha: {required: true, type: string}
+      source_review_sha: {required: true, type: string}
+      environment_name: {required: true, type: string}
+      release_id: {required: true, type: string}
+      input_asset_id: {required: true, type: string}
+      input_cipher_sha: {required: true, type: string}
+      input_cipher_bytes: {required: true, type: string}
+permissions: {}
+concurrency:
+  group: nm-ios18-${{ inputs.operation_id }}
+  cancel-in-progress: false
+jobs:
+  local-build:
+    if: github.repository == 'rungerunge/loyalino-test' && github.actor == 'rungerunge' && github.event_name == 'workflow_dispatch' && github.run_attempt == 1
+    runs-on: macos-26
+    timeout-minutes: 140
+    environment: ${{ inputs.environment_name }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.workflow_sha }}
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          sparse-checkout: .github/protected-ios18
+          sparse-checkout-cone-mode: false
+      - name: One protected local build and cipher return
+        shell: bash
+        env:
+          NM_CI_AES_KEY: ${{ secrets.NM_CI_AES_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          NM_OPERATION_ID: ${{ inputs.operation_id }}
+          NM_WORKFLOW_SHA: ${{ inputs.workflow_sha }}
+          NM_SOURCE_REVIEW_SHA: ${{ inputs.source_review_sha }}
+          NM_ENVIRONMENT_NAME: ${{ inputs.environment_name }}
+          NM_RELEASE_ID: ${{ inputs.release_id }}
+          NM_INPUT_ASSET_ID: ${{ inputs.input_asset_id }}
+          NM_INPUT_CIPHER_SHA: ${{ inputs.input_cipher_sha }}
+          NM_INPUT_CIPHER_BYTES: ${{ inputs.input_cipher_bytes }}
+        run: |
+          set +x
+          if [[ -n "${NODE_OPTIONS:-}" || -n "${NODE_DEBUG:-}" || -n "${NODE_DEBUG_NATIVE:-}" ]]; then
+            printf '{"protectedStartup":false}\n'
+            exit 1
+          fi
+          if [[ "${GITHUB_SHA}" != "${NM_WORKFLOW_SHA}" || "${GITHUB_WORKFLOW_SHA}" != "${NM_WORKFLOW_SHA}" || "${GITHUB_REF}" != "refs/tags/nm-ios18-${NM_OPERATION_ID}" ]]; then
+            printf '{"protectedRef":false}\n'
+            exit 1
+          fi
+          node .github/protected-ios18/runner.cjs --build

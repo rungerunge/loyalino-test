@@ -1,0 +1,7 @@
+{
+  "publicEnv": {
+    "EXPO_PUBLIC_API_BASE": "https://backend-production-d356.up.railway.app/api/mobile/v1",
+    "EXPO_PUBLIC_SHOP_DOMAIN": "never-monday.myshopify.com",
+    "EXPO_PUBLIC_STOREFRONT_TOKEN": ""
+  }
+}
