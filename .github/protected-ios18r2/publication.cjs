@@ -1,0 +1,5 @@
+'use strict';
+// Exact additive public-helper mapping. Cipher/keys/source bodies never enter it.
+const P=require('./policy.cjs');
+function map(reviewRaw){if(!Buffer.isBuffer(reviewRaw))P.fail();const v=JSON.parse(reviewRaw.toString('utf8'));if(v.kind!=='ROOT_PROTECTED_IOS18_SOURCE_REVIEW'||!Array.isArray(v.files))P.fail();const rows=v.files.map(r=>{if(!P.exact(r,['file','bytes','sha256'])||!/^[A-Za-z0-9_.-]+$/.test(r.file)||!P.SHA.test(r.sha256)||!Number.isSafeInteger(r.bytes)||r.bytes<1)P.fail();return{sourceFile:r.file,targetFile:'.github/protected-ios18r2/'+r.file,bytes:r.bytes,sha256:r.sha256};});const workflow=v.files.find(r=>r.file==='protected-ios18r2.yml');if(!workflow)P.fail();rows.push({sourceFile:'protected-ios18r2.yml',targetFile:'.github/workflows/nm-protected-ios18r2.yml',bytes:workflow.bytes,sha256:workflow.sha256},{sourceFile:'source-review.json',targetFile:'.github/protected-ios18r2/source-review.json',bytes:reviewRaw.length,sha256:P.sha(reviewRaw)});if(new Set(rows.map(r=>r.targetFile)).size!==rows.length)P.fail();return rows;}
+module.exports={map};

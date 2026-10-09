@@ -1,0 +1,25 @@
+'use strict';
+const crypto=require('node:crypto');
+const REPOSITORY='rungerunge/loyalino-test',ACTOR='rungerunge',RUNNER='macos-26';
+const SOURCE='0f949de56eac3b01c73ed2a6a0b7f9601cf5729c',BACKEND_SOURCE='12f6bfa680ae868d9255177609925caa9a8b1529';
+const PROJECT='adf6c486-4d81-4e19-b6b7-25e5b4ca1064',ACCOUNT='okayscales-team',BUNDLE='dk.nevermonday.app',TEAM='XNPLDX9MHP',VERSION=18;
+const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,SHA=/^[0-9a-f]{64}$/,GIT=/^[0-9a-f]{40}$/;
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+// Genuine public probe run37385144943/job112016492062. This is the
+// observed tuple, not a guessed Expo image or a verified image Git commit.
+const TOOLCHAIN=Object.freeze({imageOs:'macos26',imageVersion:'20260907.0351.1',runnerArch:'ARM64',macos:'26.6.2',xcode:'26.6',xcodeBuild:'17F113',iosSdk:'26.5',node:'v24.20.0',ruby:'3.4.10',fastlane:'2.239.0',cocoapods:'1.17.0'});
+const TOOLCHAIN_SHA=sha(JSON.stringify(canonical(TOOLCHAIN)));
+const IMAGE_SOURCE=Object.freeze({tag:'macos-26-arm64/20260907.0351',commit:'691bdc2593839b6bd2615aaa9718ca646ec3d4a6',readmeSha256:'688dc6f11befc470dd78896f4b69f5956dd9cc3986287919a6b912d748b97f21',releasePrerelease:true});
+function fail(){throw Error('PROTECTED_IOS18_CI_REFUSED');}
+function exact(v,keys){return !!v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).sort().join('|')===keys.slice().sort().join('|');}
+function canonical(v){if(Array.isArray(v))return v.map(canonical);if(v&&typeof v==='object')return Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])]));return v;}
+function utc(v){const n=Date.parse(v);if(typeof v!=='string'||!Number.isSafeInteger(n)||new Date(n).toISOString()!==v)fail();return n;}
+function approval(v,now){
+ const keys=['kind','authorized','rootReviewed','operationId','approvedAt','expiresAt','sourceReviewSha256','workflowCommit','nativeSource','backendSource','project','account','bundle','team','version','ownerAccountSha256','certificateSerialSha256','profileUuidSha256','referenceSigningProofSha256','publicSourceManifestSha256','xcodeVersion','iosSdkVersion','environmentName','noAutomaticRetry'];
+ if(!exact(v,keys)||v.kind!=='ROOT_PROTECTED_IOS18_CI_APPROVAL'||v.authorized!==true||v.rootReviewed!==true||!UUID.test(v.operationId)||!Number.isSafeInteger(now)||v.nativeSource!==SOURCE||v.backendSource!==BACKEND_SOURCE||v.project!==PROJECT||v.account!==ACCOUNT||v.bundle!==BUNDLE||v.team!==TEAM||v.version!==VERSION||v.noAutomaticRetry!==true||v.operationId==='004dcd70-4e30-4ef6-97a0-47b984e6b131'||v.operationId==='c0a2142a-c51b-41a1-9e9e-8ecbdacba1fd'||v.operationId==='f8955263-133c-4d9f-92fe-b915f7722c23'||v.operationId==='a50ff5b4-6c39-41d5-8559-e76dd33cf663'||v.operationId==='9c1a13ee-2f36-4f21-a065-7c4af835e0f7'||!GIT.test(v.workflowCommit)||v.environmentName!=='nm-ios18-'+v.operationId||['sourceReviewSha256','ownerAccountSha256','certificateSerialSha256','profileUuidSha256','referenceSigningProofSha256','publicSourceManifestSha256'].some(k=>!SHA.test(v[k])||/^0+$/.test(v[k]))||!/^\d+\.\d+(?:\.\d+)?$/.test(v.xcodeVersion)||!/^\d+\.\d+(?:\.\d+)?$/.test(v.iosSdkVersion))fail();
+ const at=utc(v.approvedAt),end=utc(v.expiresAt);if(at>now||end!==at+600000||now>=end||v.xcodeVersion!==TOOLCHAIN.xcode||v.iosSdkVersion!==TOOLCHAIN.iosSdk)fail();return v;
+}
+function repository(v,now){if(!exact(v,['repository','public','archived','disabled','admin','actionsEnabled','unexpectedWriters','workflowsReviewed','refSha','observedAt'])||v.repository!==REPOSITORY||v.public!==true||v.archived!==false||v.disabled!==false||v.admin!==true||v.actionsEnabled!==true||v.unexpectedWriters!==0||v.workflowsReviewed!==true||!GIT.test(v.refSha)||utc(v.observedAt)>now||now-utc(v.observedAt)>120000)fail();return v;}
+function runtime(v,a){if(!exact(v,['repository','actor','event','workflowCommit','runId','runAttempt','runnerLabel','runnerOs','environmentName','xcodeVersion','iosSdkVersion','expoTokenPresent','paidRunner','cache','actionsArtifacts','packages','lfs'])||v.repository!==REPOSITORY||v.actor!==ACTOR||v.event!=='workflow_dispatch'||v.workflowCommit!==a.workflowCommit||!Number.isSafeInteger(v.runId)||v.runId<1||v.runAttempt!==1||v.runnerLabel!==RUNNER||v.runnerOs!=='macOS'||v.environmentName!==a.environmentName||v.xcodeVersion!==a.xcodeVersion||v.iosSdkVersion!==a.iosSdkVersion||['expoTokenPresent','paidRunner','cache','actionsArtifacts','packages','lfs'].some(k=>v[k]!==false))fail();return v;}
+function publicSummary(stage,code,out,err){if(!['SOURCE','EXPORT','SEAL','ADMISSION','DECRYPT','BUILD','AUDIT','ENCRYPT','RETURN','CLEANUP'].includes(stage)||code!==null&&!Number.isInteger(code)||!Buffer.isBuffer(out)||!Buffer.isBuffer(err))fail();return {stage,exitCode:code,stdoutBytes:out.length,stdoutSha256:sha(out),stderrBytes:err.length,stderrSha256:sha(err),detailsSuppressed:true};}
+module.exports={REPOSITORY,ACTOR,RUNNER,SOURCE,BACKEND_SOURCE,PROJECT,ACCOUNT,BUNDLE,TEAM,VERSION,UUID,SHA,GIT,TOOLCHAIN,TOOLCHAIN_SHA,IMAGE_SOURCE,sha,fail,exact,canonical,utc,approval,repository,runtime,publicSummary};
