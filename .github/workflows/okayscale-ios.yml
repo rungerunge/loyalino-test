@@ -1,0 +1,47 @@
+name: Okayscale krypteret iOS-build
+run-name: Okayscale ${{ inputs.operation }}
+on:
+  workflow_dispatch:
+    inputs:
+      operation: {required: true, type: string}
+      workflow_sha: {required: true, type: string}
+      environment: {required: true, type: string}
+      release_id: {required: true, type: string}
+      input_asset_id: {required: true, type: string}
+      input_sha: {required: true, type: string}
+      input_bytes: {required: true, type: string}
+      expires: {required: true, type: string}
+permissions: {}
+concurrency:
+  group: okayscale-${{ inputs.operation }}
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.repository == 'rungerunge/loyalino-test' && github.actor == 'rungerunge' && github.run_attempt == 1
+    runs-on: macos-26
+    timeout-minutes: 120
+    environment: ${{ inputs.environment }}
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.workflow_sha }}
+          persist-credentials: false
+          sparse-checkout: .github/okayscale-ios
+          sparse-checkout-cone-mode: false
+      - name: Krypteret Mac-kørsel
+        shell: bash
+        env:
+          OKAY_AES_KEY: ${{ secrets.OKAY_AES_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          OKAY_OPERATION: ${{ inputs.operation }}
+          OKAY_WORKFLOW_SHA: ${{ inputs.workflow_sha }}
+          OKAY_RELEASE_ID: ${{ inputs.release_id }}
+          OKAY_INPUT_ASSET_ID: ${{ inputs.input_asset_id }}
+          OKAY_INPUT_SHA: ${{ inputs.input_sha }}
+          OKAY_INPUT_BYTES: ${{ inputs.input_bytes }}
+          OKAY_EXPIRES: ${{ inputs.expires }}
+        run: |
+          set +x
+          if [[ -n "${NODE_OPTIONS:-}" || -n "${NODE_DEBUG:-}" || -n "${NODE_DEBUG_NATIVE:-}" ]]; then exit 1; fi
+          node .github/okayscale-ios/ios-cipher-runner.cjs
