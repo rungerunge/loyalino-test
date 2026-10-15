@@ -8,8 +8,9 @@ const repo = 'rungerunge/loyalino-test';
 const env = process.env;
 function assert(ok) { if (!ok) throw Error('POLICY'); }
 const simulatorScreenshots = ['ios', 'ios-ipad'].flatMap(p => ['01-board', '02-chat', '03-indbakke', '04-ai'].map(n => `screenshots/${p}-${n}.png`));
+const simulatorDiagnostics = ['ios-ui-failure.png', 'ios-ipad-ui-failure.png'];
 const simulatorSteps = ['install', 'web', 'sync', 'preflight', 'swift-compile', 'swift-policy', 'debug', 'signatur', 'entitlements', 'release', 'opstart', 'pakning', 'xctest', 'screenshots'];
-const simulatorFiles = ['runner-report.json', 'cleanup.json', 'build.log', 'simulator-report.json', 'ui-report.json', 'startup-report.json', 'asset-audit.json', 'evidence-manifest.json', 'ios-smoke.png', 'ios-smoke.log', ...simulatorScreenshots, ...simulatorSteps.map(n => `logs/${n}.log`)];
+const simulatorFiles = ['runner-report.json', 'cleanup.json', 'build.log', 'simulator-report.json', 'ui-report.json', 'startup-report.json', 'asset-audit.json', 'evidence-manifest.json', 'ios-smoke.png', 'ios-smoke.log', ...simulatorDiagnostics, ...simulatorScreenshots, ...simulatorSteps.map(n => `logs/${n}.log`)];
 function operationMode(value) { assert(value === undefined || value === 'release' || value === 'simulator'); return value || 'release'; }
 function simulatorConfig(config, context) {
   assert(config && Object.keys(config).sort().join(',') === 'mode,operation,sourceSha,workflowSha' && config.mode === 'simulator');
@@ -105,6 +106,12 @@ async function validateSimulatorEvidence(directory, expected) {
   // The manifest itself is authenticated by the return envelope. Every other byte is checked independently.
   const computed = await evidenceManifest(directory, { operation: expected.operation, workflowSha: expected.workflowSha, sourceSha: expected.sourceSha, runId: String(expected.runId) });
   assert(JSON.stringify(actual) === JSON.stringify(computed));
+  for (const file of actual.files.filter(f => simulatorDiagnostics.includes(f.path))) {
+    const png = await fs.readFile(path.join(directory, file.path));
+    const size = file.path === 'ios-ipad-ui-failure.png' ? [2064, 2752] : [1320, 2868];
+    assert(!report.passed && png.length > 24 && png.subarray(0, 8).toString('hex') === '89504e470d0a1a0a');
+    assert(png.readUInt32BE(16) === size[0] && png.readUInt32BE(20) === size[1]);
+  }
   if (report.passed) {
     const local = JSON.parse(await fs.readFile(path.join(directory, 'simulator-report.json'))), ui = JSON.parse(await fs.readFile(path.join(directory, 'ui-report.json')));
     assert(local.passed === true && local.lastStep === 'faerdig' && local.platform === 'darwin' && local.exitCode === 0 && typeof local.runId === 'string' && local.runId.length > 0 && local.runId === ui.runId && ui.passed === true && JSON.stringify(local.ui) === JSON.stringify(ui));
