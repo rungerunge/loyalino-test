@@ -9,7 +9,7 @@ const env = process.env;
 function assert(ok) { if (!ok) throw Error('POLICY'); }
 const simulatorScreenshots = ['ios', 'ios-ipad'].flatMap(p => ['01-board', '02-chat', '03-indbakke', '04-ai'].map(n => `screenshots/${p}-${n}.png`));
 const simulatorSteps = ['install', 'web', 'sync', 'preflight', 'swift-compile', 'swift-policy', 'debug', 'signatur', 'entitlements', 'release', 'opstart', 'pakning', 'xctest', 'screenshots'];
-const simulatorFiles = ['runner-report.json', 'cleanup.json', 'build.log', 'simulator-report.json', 'ui-report.json', 'asset-audit.json', 'evidence-manifest.json', 'ios-smoke.png', 'ios-smoke.log', ...simulatorScreenshots, ...simulatorSteps.map(n => `logs/${n}.log`)];
+const simulatorFiles = ['runner-report.json', 'cleanup.json', 'build.log', 'simulator-report.json', 'ui-report.json', 'startup-report.json', 'asset-audit.json', 'evidence-manifest.json', 'ios-smoke.png', 'ios-smoke.log', ...simulatorScreenshots, ...simulatorSteps.map(n => `logs/${n}.log`)];
 function operationMode(value) { assert(value === undefined || value === 'release' || value === 'simulator'); return value || 'release'; }
 function simulatorConfig(config, context) {
   assert(config && Object.keys(config).sort().join(',') === 'mode,operation,sourceSha,workflowSha' && config.mode === 'simulator');
@@ -110,6 +110,12 @@ async function validateSimulatorEvidence(directory, expected) {
     assert(local.passed === true && local.lastStep === 'faerdig' && local.platform === 'darwin' && local.exitCode === 0 && typeof local.runId === 'string' && local.runId.length > 0 && local.runId === ui.runId && ui.passed === true && JSON.stringify(local.ui) === JSON.stringify(ui));
     assert(Array.isArray(ui.outcomes) && ui.outcomes.length === 2 && ['ios', 'ios-ipad'].every(p => ui.outcomes.some(o => o.platform === p && o.passed === true)));
     assert(Array.isArray(local.screenshots) && [...local.screenshots].sort().join(',') === simulatorScreenshots.map(p => path.posix.basename(p)).sort().join(','));
+    const startup = JSON.parse(await fs.readFile(path.join(directory, 'startup-report.json')));
+    assert(startup.schema === 1 && startup.passed === true && startup.bundleId === 'dk.okayscale.app' && startup.runId === local.runId && Array.isArray(startup.launches) && startup.launches.length === 2);
+    for (const [index, launch] of startup.launches.entries()) {
+      assert(launch.launch === index + 1 && launch.screenshot === `launch-${index + 1}.png`);
+      for (const key of ['mailField', 'passwordField', 'loginButton', 'foreground', 'demoHidden', 'errorAbsent']) assert(launch[key] === true);
+    }
     const assets = JSON.parse(await fs.readFile(path.join(directory, 'asset-audit.json')));
     assert(assets.platform === 'ios' && assets.expectedScreenshotCount === 8 && assets.screenshotChecks === 8 && assets.screenshotsComplete === true && assets.missingScreenshots.length === 0);
     for (const file of ['ios-smoke.png', ...simulatorScreenshots]) {
