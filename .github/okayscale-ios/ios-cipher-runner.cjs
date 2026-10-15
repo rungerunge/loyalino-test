@@ -13,7 +13,7 @@ const simulatorSteps = ['install', 'web', 'sync', 'preflight', 'swift-compile', 
 const simulatorFiles = ['runner-report.json', 'cleanup.json', 'build.log', 'simulator-report.json', 'ui-report.json', 'startup-report.json', 'asset-audit.json', 'evidence-manifest.json', 'ios-smoke.png', 'ios-smoke.log', ...simulatorDiagnostics, ...simulatorScreenshots, ...simulatorSteps.map(n => `logs/${n}.log`)];
 function operationMode(value) { assert(value === undefined || value === 'release' || value === 'simulator'); return value || 'release'; }
 function simulatorConfig(config, context) {
-  assert(config && Object.keys(config).sort().join(',') === 'mode,operation,sourceSha,workflowSha' && config.mode === 'simulator');
+  assert(config && Object.keys(config).sort().join(',') === (config.evidenceSchema === 2 ? 'evidenceSchema,mode,operation,sourceSha,workflowSha' : 'mode,operation,sourceSha,workflowSha') && config.mode === 'simulator');
   assert(config.operation === context.operation && config.workflowSha === context.workflowSha && /^[a-f0-9]{40}$/.test(config.sourceSha));
   return config;
 }
@@ -100,6 +100,8 @@ async function validateSimulatorEvidence(directory, expected) {
   const report = JSON.parse(await fs.readFile(path.join(directory, 'runner-report.json')));
   assert(report.mode === 'simulator' && report.operation === expected.operation && report.workflowSha === expected.workflowSha && report.sourceSha === expected.sourceSha && report.runId === String(expected.runId));
   assert(typeof report.passed === 'boolean' && Number.isInteger(report.code) && report.passed === (report.code === 0));
+  const evidenceSchema = expected.evidenceSchema ?? 1;
+  assert([1, 2].includes(evidenceSchema) && (report.evidenceSchema ?? 1) === evidenceSchema);
   const cleanup = JSON.parse(await fs.readFile(path.join(directory, 'cleanup.json')));
   assert(cleanup.signingMaterialsAbsent === true && cleanup.simulatorsRemoved === true && cleanup.testKeysAbsent === true);
   const actual = JSON.parse(await fs.readFile(path.join(directory, 'evidence-manifest.json')));
@@ -116,12 +118,18 @@ async function validateSimulatorEvidence(directory, expected) {
     const local = JSON.parse(await fs.readFile(path.join(directory, 'simulator-report.json'))), ui = JSON.parse(await fs.readFile(path.join(directory, 'ui-report.json')));
     assert(local.passed === true && local.lastStep === 'faerdig' && local.platform === 'darwin' && local.exitCode === 0 && typeof local.runId === 'string' && local.runId.length > 0 && local.runId === ui.runId && ui.passed === true && JSON.stringify(local.ui) === JSON.stringify(ui));
     assert(Array.isArray(ui.outcomes) && ui.outcomes.length === 2 && ['ios', 'ios-ipad'].every(p => ui.outcomes.some(o => o.platform === p && o.passed === true)));
+    if (evidenceSchema === 2) {
+      assert(ui.schema === 2 && ui.outcomes.every(o => o.localDemoVerified === true && o.osReboot === true && o.persistentRestore === true && o.authClockAdvancedDays === 31 && Number.isSafeInteger(o.otpLogins) && o.otpLogins >= 3));
+      const swift = await fs.readFile(path.join(directory, 'logs/swift-policy.log'), 'utf8');
+      for (const marker of ['Okayscale HTTP-politik: 52 kontroller bestået', 'Okayscale sessionsikkerhed: 32 Foundation-fejlkontroller bestået', 'Okayscale native konfiguration: 42 Foundation-kontroller bestået', 'Okayscale OTP-login: 39 Foundation-kontroller bestået']) assert(swift.includes(marker));
+    }
     assert(Array.isArray(local.screenshots) && [...local.screenshots].sort().join(',') === simulatorScreenshots.map(p => path.posix.basename(p)).sort().join(','));
     const startup = JSON.parse(await fs.readFile(path.join(directory, 'startup-report.json')));
-    assert(startup.schema === 1 && startup.passed === true && startup.bundleId === 'dk.okayscale.app' && startup.runId === local.runId && Array.isArray(startup.launches) && startup.launches.length === 2);
+    assert(startup.schema === evidenceSchema && startup.passed === true && startup.bundleId === 'dk.okayscale.app' && startup.runId === local.runId && Array.isArray(startup.launches) && startup.launches.length === 2);
     for (const [index, launch] of startup.launches.entries()) {
       assert(launch.launch === index + 1 && launch.screenshot === `launch-${index + 1}.png`);
-      for (const key of ['mailField', 'passwordField', 'loginButton', 'foreground', 'demoHidden', 'errorAbsent']) assert(launch[key] === true);
+      const fields = evidenceSchema === 2 ? ['mailField', 'requestCodeButton', 'passwordAbsent', 'foreground', 'demoHidden', 'errorAbsent'] : ['mailField', 'passwordField', 'loginButton', 'foreground', 'demoHidden', 'errorAbsent'];
+      for (const key of fields) assert(launch[key] === true);
     }
     const assets = JSON.parse(await fs.readFile(path.join(directory, 'asset-audit.json')));
     assert(assets.platform === 'ios' && assets.expectedScreenshotCount === 8 && assets.screenshotChecks === 8 && assets.screenshotsComplete === true && assets.missingScreenshots.length === 0);
@@ -195,7 +203,7 @@ async function main() {
     await fs.mkdir(path.join(root, 'return'), { recursive: true });
     await fs.writeFile(path.join(root, 'return/build.log'), safeLog, { mode: 0o600 });
     await fs.writeFile(path.join(root, 'return/runner-report.json'), JSON.stringify({ passed: result.code === 0, code: result.code,
-      runId: env.GITHUB_RUN_ID, sourceSha: config.sourceSha, ...(mode === 'simulator' ? { mode, ...context } : { buildNumber: config.buildNumber }), completedAt: new Date().toISOString() }));
+      runId: env.GITHUB_RUN_ID, sourceSha: config.sourceSha, ...(mode === 'simulator' ? { mode, ...context, ...(config.evidenceSchema ? { evidenceSchema: config.evidenceSchema } : {}) } : { buildNumber: config.buildNumber }), completedAt: new Date().toISOString() }));
     if (mode === 'simulator') {
       const manifest = await evidenceManifest(path.join(root, 'return'), { ...context, sourceSha: config.sourceSha, runId: env.GITHUB_RUN_ID });
       await fs.writeFile(path.join(root, 'return/evidence-manifest.json'), JSON.stringify(manifest));
