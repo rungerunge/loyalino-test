@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       operation: {required: true, type: string}
+      mode: {required: true, type: string}
       workflow_sha: {required: true, type: string}
       environment: {required: true, type: string}
       release_id: {required: true, type: string}
@@ -35,6 +36,7 @@ jobs:
           OKAY_AES_KEY: ${{ secrets.OKAY_AES_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
           OKAY_OPERATION: ${{ inputs.operation }}
+          OKAY_MODE: ${{ inputs.mode }}
           OKAY_WORKFLOW_SHA: ${{ inputs.workflow_sha }}
           OKAY_RELEASE_ID: ${{ inputs.release_id }}
           OKAY_INPUT_ASSET_ID: ${{ inputs.input_asset_id }}
