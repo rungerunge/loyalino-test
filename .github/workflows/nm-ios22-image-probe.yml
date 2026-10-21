@@ -1,0 +1,49 @@
+name: NeverMonday credential-free iOS22 image metadata
+run-name: iOS22 image probe ${{ inputs.operation_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      operation_id: {required: true, type: string}
+      workflow_sha: {required: true, type: string}
+      source_review_sha: {required: true, type: string}
+      approved_at: {required: true, type: string}
+      expires_at: {required: true, type: string}
+permissions: {}
+concurrency:
+  group: nm-ios22-image-probe-${{ inputs.operation_id }}
+  cancel-in-progress: false
+jobs:
+  metadata:
+    if: github.repository == 'rungerunge/loyalino-test' && github.actor == 'rungerunge' && github.event_name == 'workflow_dispatch' && github.run_attempt == 1
+    runs-on: macos-26
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.workflow_sha }}
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          sparse-checkout: .github/nm-ios22-image-probe
+          sparse-checkout-cone-mode: false
+      - name: Observe exact public image and toolchain versions
+        shell: bash
+        env:
+          NM_PROBE_OPERATION_ID: ${{ inputs.operation_id }}
+          NM_PROBE_WORKFLOW_SHA: ${{ inputs.workflow_sha }}
+          NM_PROBE_REVIEW_SHA: ${{ inputs.source_review_sha }}
+          NM_PROBE_APPROVED_AT: ${{ inputs.approved_at }}
+          NM_PROBE_EXPIRES_AT: ${{ inputs.expires_at }}
+        run: |
+          set +x
+          if [[ -n "${NODE_OPTIONS:-}" || -n "${NODE_DEBUG:-}" || -n "${NODE_DEBUG_NATIVE:-}" || -n "${EXPO_TOKEN:-}" || -n "${EAS_TOKEN:-}" || -n "${NM_CI_AES_KEY:-}" ]]; then
+            printf '{"credentialFreeProbe":false,"detailsSuppressed":true}\n'
+            exit 1
+          fi
+          if [[ "${GITHUB_SHA}" != "${NM_PROBE_WORKFLOW_SHA}" || "${GITHUB_WORKFLOW_SHA}" != "${NM_PROBE_WORKFLOW_SHA}" || "${GITHUB_REF}" != "refs/tags/nm-ios22-image-probe-${NM_PROBE_OPERATION_ID}" ]]; then
+            printf '{"credentialFreeProbe":false,"detailsSuppressed":true}\n'
+            exit 1
+          fi
+          node .github/nm-ios22-image-probe/probe.cjs --probe

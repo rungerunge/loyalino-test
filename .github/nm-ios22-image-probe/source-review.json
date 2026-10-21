@@ -1,0 +1,21 @@
+{
+  "kind": "IOS22_CREDENTIAL_FREE_PROBE_SOURCE_REVIEW",
+  "sourceCompatibilityCommit": "297ca675225b3aa0f361395b99a998ced3a3afe9",
+  "expectedImageVersion": "20261013.0424.1",
+  "files": [
+    {
+      "source": "probe.cjs",
+      "target": ".github/nm-ios22-image-probe/probe.cjs",
+      "bytes": 6829,
+      "sha256": "cf4f31070b1fc8daf565486d6597b3745145c5ef2ecbc937fa48f40d3e16ad50"
+    },
+    {
+      "source": "probe.yml",
+      "target": ".github/workflows/nm-ios22-image-probe.yml",
+      "bytes": 2196,
+      "sha256": "218c69fa2ed2ade185fcf0cb185b4b88597124380ddb441ef4ac9c63bf10d380"
+    }
+  ],
+  "scope": "Observe exact public runner image and ten finite toolchain values only. No app source, credentials, installs, build, EAS or uploads.",
+  "preparedAt": "2026-10-21T11:04:01.567Z"
+}
