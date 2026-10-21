@@ -1,0 +1,137 @@
+{
+  "name": "eas-cli-local-build-plugin",
+  "version": "24.8.0",
+  "integrity": "sha512-9QM308wHdxq45WDb/cTFLMwMdAkG6nfRHpEuxXm/bqzK733+TBvq8XJJahkP5HD3rZdIkmXMzVoPxyQgXOiBNQ==",
+  "files": [
+    {
+      "file": "package/bin/run",
+      "bytes": 267,
+      "sha256": "eaf942ea0e61fb3aeb78a2ed72c94b79b9f7877b76e580aa1fc4378f7f6d14b9"
+    },
+    {
+      "file": "package/dist/android.js",
+      "bytes": 1960,
+      "sha256": "ea94c339d6d1dac318270ad9adc8418dc9fa66a5cb094a30f180fce8036ee9d5"
+    },
+    {
+      "file": "package/dist/artifacts.js",
+      "bytes": 3536,
+      "sha256": "08a6e63e435918eeb62a8986d24ae30fe98dcc3bca78d15157d96b27c2781058"
+    },
+    {
+      "file": "package/dist/build.js",
+      "bytes": 4043,
+      "sha256": "efe24dda4554bc7d7c7995b0f9c4ebc347b1b8e31be53fcd0bc9aa97e2afac65"
+    },
+    {
+      "file": "package/dist/checkRuntime.js",
+      "bytes": 5013,
+      "sha256": "eade29ffea476957cae5f8da3c49323374fe6d7ecaf6408d7f4184cbe9fc852d"
+    },
+    {
+      "file": "package/dist/config.js",
+      "bytes": 1557,
+      "sha256": "e3e354b5659c8475ac3b41add7a9568b29bc58d8b6eb43a37df71a6d96e0fd53"
+    },
+    {
+      "file": "package/dist/exit.js",
+      "bytes": 1192,
+      "sha256": "cc2c1f4f9646da703db3341f7cb265f9a43394e967289a293a3bf6907acc5db1"
+    },
+    {
+      "file": "package/dist/ios.js",
+      "bytes": 1931,
+      "sha256": "4321768f06a1fde963512798db4bee54c4977b181029ff4fac379616b8a37ae9"
+    },
+    {
+      "file": "package/dist/logger.js",
+      "bytes": 4520,
+      "sha256": "0f4fbb76e0da13682ae5bf16753b56b463abe6538a86ef42019b15fd575ab443"
+    },
+    {
+      "file": "package/dist/main.js",
+      "bytes": 913,
+      "sha256": "75e3a99c9b96be8fa4f2804fbc7ee8b8ef7cd0f7797fdb80aabd37335b43352f"
+    },
+    {
+      "file": "package/dist/parseInput.js",
+      "bytes": 2852,
+      "sha256": "ad04a22a5a7598e02f3bb7f766e1344606efc68a94f58db3f6c1a22f8c240d6b"
+    },
+    {
+      "file": "package/dist/types.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "file": "package/dist/workingdir.js",
+      "bytes": 1718,
+      "sha256": "8f0dc5b7edb38cfe44febb34ebc50cdbe2fbc44a827c2b466c1f6e103000951f"
+    },
+    {
+      "file": "package/package.json",
+      "bytes": 1643,
+      "sha256": "402795ace581d42a7a88c95b43b97919cee64e4f4cfc34a5bc1bc23f55eb4e2e"
+    },
+    {
+      "file": "package/dist/android.d.ts",
+      "bytes": 275,
+      "sha256": "d60231a509d8696e93f8afe4bd641c9742da44de8a1e83d32fcd03c85d679e66"
+    },
+    {
+      "file": "package/dist/artifacts.d.ts",
+      "bytes": 159,
+      "sha256": "2299c2d1169c55601d6b86b660acf5a6e06b120926132d4c56613316146e393a"
+    },
+    {
+      "file": "package/dist/build.d.ts",
+      "bytes": 144,
+      "sha256": "c5920817ff412eaa0d1321c00c51fb9bc1f36c11c67a5b4a993b3084752b825a"
+    },
+    {
+      "file": "package/dist/checkRuntime.d.ts",
+      "bytes": 111,
+      "sha256": "796b945bbf2e210b0bf736d73724d7919adad0e378ac4623e00b7014e5bbdf76"
+    },
+    {
+      "file": "package/dist/config.d.ts",
+      "bytes": 304,
+      "sha256": "e1ba435b1bef6e2fcb2fb277624614f041a51014b1d80160910ee2421c9e5c67"
+    },
+    {
+      "file": "package/dist/exit.d.ts",
+      "bytes": 179,
+      "sha256": "ceaba2f0ce1b3ff9d43bb765c0c075cf4412e995cad5619e1700944432b14402"
+    },
+    {
+      "file": "package/dist/ios.d.ts",
+      "bytes": 263,
+      "sha256": "cce283e4d60008b3c69b45b0585d4a434326a81e71528004cc4957897d62e3d7"
+    },
+    {
+      "file": "package/dist/logger.d.ts",
+      "bytes": 678,
+      "sha256": "44a5d041f46fed9f8aa5e41c14fb24550cfad9810bad50fbadf63a2050014c9f"
+    },
+    {
+      "file": "package/dist/main.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "file": "package/dist/parseInput.d.ts",
+      "bytes": 193,
+      "sha256": "bcf8c5695f483c2fddf8b0022873e578a8e4b4c5ec5c84a0a3dc420abacab50b"
+    },
+    {
+      "file": "package/dist/types.d.ts",
+      "bytes": 221,
+      "sha256": "3cb6addb280f62a39ce2fc8a7e9cf3a48687864f5e930efb01f35f203c827014"
+    },
+    {
+      "file": "package/dist/workingdir.d.ts",
+      "bytes": 141,
+      "sha256": "ff25f93a204b67bbcf8a75afbde74c20927347767659228c08c2b56d8606b3bf"
+    }
+  ]
+}
