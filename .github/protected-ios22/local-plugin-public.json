@@ -1,0 +1,50 @@
+{
+  "name": "eas-cli-local-build-plugin",
+  "version": "24.8.0",
+  "dist": {
+    "shasum": "7d9f8e2228a4b583c1d7476fd72a36a856339e3f",
+    "tarball": "https://registry.npmjs.org/eas-cli-local-build-plugin/-/eas-cli-local-build-plugin-24.8.0.tgz",
+    "fileCount": 28,
+    "integrity": "sha512-9QM308wHdxq45WDb/cTFLMwMdAkG6nfRHpEuxXm/bqzK733+TBvq8XJJahkP5HD3rZdIkmXMzVoPxyQgXOiBNQ==",
+    "signatures": [
+      {
+        "sig": "MEUCIQCNiOk1d8vZTtCGj8z4whyOsROsV3zBNjbG9qMkwTBhHgIgSZthF4NiBL+y59gfmjCHaldqdD4RvMlnBBOagJnHKA4=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      },
+      {
+        "sig": "MEUCIBIvBBFTOUdl9cCZb30ZHWe1PUToXQoRxvvRhZTM5pVpAiEA04nTgBBL5GGdHF6sCw2gszsxbXbAfOS6/IWJltx8Az4=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "attestations": {
+      "url": "https://registry.npmjs.org/-/npm/v1/attestations/eas-cli-local-build-plugin@24.8.0",
+      "provenance": {
+        "predicateType": "https://slsa.dev/provenance/v1"
+      }
+    },
+    "unpackedSize": 35381
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "eas-cli-local-build-plugin": "bin/run"
+  },
+  "dependencies": {
+    "joi": "^17.13.1",
+    "tar": "7.5.19",
+    "uuid": "^9.0.1",
+    "chalk": "4.1.2",
+    "lodash": "^4.18.1",
+    "semver": "^7.6.2",
+    "fs-extra": "^11.2.0",
+    "env-paths": "^2.2.1",
+    "nullthrows": "^1.1.1",
+    "@expo/bunyan": "^4.0.1",
+    "@expo/logger": "24.8.0",
+    "@expo/build-tools": "24.8.0",
+    "@expo/spawn-async": "^1.7.2",
+    "@expo/turtle-spawn": "24.8.0",
+    "@expo/eas-build-job": "24.8.0"
+  }
+}
